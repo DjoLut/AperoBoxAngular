@@ -1,1 +1,11 @@
-<p>header works!</p>
+<header>
+    <p>header works!</p>
+    <nav>
+        <ul class="nav navbar-nav">
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/accueil">Accueil</a></li>
+            <li routerLinkActive="active"><a routerLink="/utilisateur">Utilisateurs</a></li>
+            <li routerLinkActive="active"><a routerLink="/commentaire">Commentaire</a></li>
+            <li routerLinkActive="active"><a routerLink="/update">Mise à jour</a></li>
+        </ul>
+    </nav>
+</header>
