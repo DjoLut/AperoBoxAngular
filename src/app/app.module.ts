@@ -11,6 +11,12 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { UtilisateursComponent } from './utilisateurs/utilisateurs.component';
 import { CommentaireComponent } from './commentaire/commentaire.component';
 import { CommonModule } from '@angular/common';
+import { UtilisateursListComponent } from './Component/utilisateurs-list/utilisateurs-list.component';
+import { UtilisateursDetailsComponent } from './Component/utilisateurs-details/utilisateurs-details.component';
+import { CommentaireListComponent } from './Component/commentaire-list/commentaire-list.component';
+import { BoxListComponent } from './Component/box-list/box-list.component';
+import { BoxDetailsComponent } from './Component/box-details/box-details.component';
+import { ProduitListComponent } from './Component/produit-list/produit-list.component';
 
 
 @NgModule({
@@ -20,7 +26,13 @@ import { CommonModule } from '@angular/common';
     MiseAJourComponent,
     AccueilComponent,
     UtilisateursComponent,
-    CommentaireComponent
+    CommentaireComponent,
+    UtilisateursListComponent,
+    UtilisateursDetailsComponent,
+    CommentaireListComponent,
+    BoxListComponent,
+    BoxDetailsComponent,
+    ProduitListComponent
   ],
   imports: [
     BrowserModule,
