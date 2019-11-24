@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { UtilisateursComponent } from './utilisateurs/utilisateurs.component';
-import { AccueilComponent } from './accueil/accueil.component';
-import { CommentaireComponent } from './commentaire/commentaire.component';
-import { MiseAJourComponent } from './mise-a-jour/mise-a-jour.component';
+import { UtilisateursComponent } from './Component/UtilisateursComponents/utilisateurs/utilisateurs.component';
+import { AccueilComponent } from './Component/AccueilComponents/accueil/accueil.component';
+import { CommentaireComponent } from './Component/CommentaireComponents/commentaire/commentaire.component';
+import { MiseAJourComponent } from './Component/MiseAJourComponents/mise-a-jour/mise-a-jour.component';
 
 
 const routes: Routes = [
