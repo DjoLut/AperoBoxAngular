@@ -1,7 +1,13 @@
 #list-box {
     float: left;
+    width: 45%;
+    margin: 5px;
+    padding: 5px;
 }
 
 #commentaire-list {
     float: right;
+    width: 45%;
+    margin: 5px;
+    padding: 5px;
 }
