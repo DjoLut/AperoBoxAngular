@@ -1,0 +1,11 @@
+#box-list {
+    float: left;
+}
+
+#box-details {
+    text-align: center;
+}
+
+#produit-list {
+    float: right;
+}
