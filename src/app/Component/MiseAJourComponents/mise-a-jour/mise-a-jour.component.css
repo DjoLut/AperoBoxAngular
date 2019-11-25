@@ -1,11 +1,26 @@
 #box-list {
     float: left;
+    width: 31%;
+    margin: 5px;
+    margin-right: 10px;
+    margin-left: 20px;
+    padding: 5px;
+    border: 1px solid;
 }
 
 #box-details {
-    text-align: center;
+    float: left;
+    width: 31%;
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid;
 }
 
 #produit-list {
-    float: right;
+    float: left;
+    width: 31%;
+    margin: 5px;
+    margin-left: 10px;
+    padding: 5px;
+    border: 1px solid;
 }

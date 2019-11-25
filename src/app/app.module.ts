@@ -17,6 +17,7 @@ import { CommentaireListComponent } from './Component/CommentaireComponents/comm
 import { BoxListComponent } from './Component/MiseAJourComponents/box-list/box-list.component';
 import { BoxDetailsComponent } from './Component/MiseAJourComponents/box-details/box-details.component';
 import { ProduitListComponent } from './Component/MiseAJourComponents/produit-list/produit-list.component';
+import { PageNonTrouveComponent } from './Component/page-non-trouve/page-non-trouve.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { ProduitListComponent } from './Component/MiseAJourComponents/produit-li
     CommentaireListComponent,
     BoxListComponent,
     BoxDetailsComponent,
-    ProduitListComponent
+    ProduitListComponent,
+    PageNonTrouveComponent
   ],
   imports: [
     BrowserModule,

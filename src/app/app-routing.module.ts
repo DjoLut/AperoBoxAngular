@@ -4,6 +4,7 @@ import { UtilisateursComponent } from './Component/UtilisateursComponents/utilis
 import { AccueilComponent } from './Component/AccueilComponents/accueil/accueil.component';
 import { CommentaireComponent } from './Component/CommentaireComponents/commentaire/commentaire.component';
 import { MiseAJourComponent } from './Component/MiseAJourComponents/mise-a-jour/mise-a-jour.component';
+import { PageNonTrouveComponent } from './Component/page-non-trouve/page-non-trouve.component';
 
 
 const routes: Routes = [
@@ -11,7 +12,8 @@ const routes: Routes = [
   {path: 'accueil', component: AccueilComponent},
   {path: 'utilisateur', component: UtilisateursComponent},
   {path: 'commentaire', component: CommentaireComponent},
-  {path: 'update', component: MiseAJourComponent}
+  {path: 'update', component: MiseAJourComponent},
+  {path: '**', component: PageNonTrouveComponent}
 ];
 
 @NgModule({

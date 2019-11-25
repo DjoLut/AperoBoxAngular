@@ -3,6 +3,7 @@
     width: 45%;
     margin: 5px;
     padding: 5px;
+    border: 1px solid;
 }
 
 #commentaire-list {
@@ -10,4 +11,5 @@
     width: 45%;
     margin: 5px;
     padding: 5px;
+    border: 1px solid;
 }
