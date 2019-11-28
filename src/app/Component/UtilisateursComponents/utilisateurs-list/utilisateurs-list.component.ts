@@ -16,7 +16,7 @@ export class UtilisateursListComponent implements OnInit {
   ngOnInit() {
     this.utilisateurs = new Array();
     this.utilisateurService.getAllUtilisateur().subscribe((data) => {
-      this.utilisateurs.push(data);
+      this.utilisateurs = data;
     });
   }
 
