@@ -10,6 +10,7 @@ import { Utilisateur } from 'src/app/Model/Utilisateur';
 export class UtilisateursListComponent implements OnInit {
 
   utilisateurs: Utilisateur[];
+  selectedUtilisateur: Utilisateur;
 
   constructor(private utilisateurService: UtilisateurService) { }
 
@@ -18,6 +19,10 @@ export class UtilisateursListComponent implements OnInit {
     this.utilisateurService.getAllUtilisateur().subscribe((data) => {
       this.utilisateurs = data;
     });
+  }
+
+  selectUtilisateur(utilisateur: Utilisateur) {
+    this.selectedUtilisateur = utilisateur;
   }
 
 }

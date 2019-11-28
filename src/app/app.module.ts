@@ -8,7 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './Component/header/header.component';
 import { MiseAJourComponent } from './Component/MiseAJourComponents/mise-a-jour/mise-a-jour.component';
 import { AccueilComponent } from './Component/AccueilComponents/accueil/accueil.component';
-import { UtilisateursComponent } from './Component/UtilisateursComponents/utilisateurs/utilisateurs.component';
 import { CommentaireComponent } from './Component/CommentaireComponents/commentaire/commentaire.component';
 import { CommonModule } from '@angular/common';
 import { UtilisateursListComponent } from './Component/UtilisateursComponents/utilisateurs-list/utilisateurs-list.component';
@@ -26,7 +25,6 @@ import { PageNonTrouveComponent } from './Component/page-non-trouve/page-non-tro
     HeaderComponent,
     MiseAJourComponent,
     AccueilComponent,
-    UtilisateursComponent,
     CommentaireComponent,
     UtilisateursListComponent,
     UtilisateursDetailsComponent,

@@ -1,7 +1,11 @@
-<p>utilisateurs-list works!</p>
-
-<div>
+<p></p>
+<div id="utilisateur-list">
+    <h3>Liste des utilisateurs</h3>
     <ul *ngIf="utilisateurs">
-        <li *ngFor="let util of utilisateurs">{{util.nom}} {{util.prenom}}</li>
+        <li *ngFor="let util of utilisateurs"><a (click)="selectUtilisateur(util)">{{util.nom}} {{util.prenom}}</a></li>
     </ul>
+</div>
+
+<div id="utilisateur-details">
+    <app-utilisateurs-details [utilisateur]="selectedUtilisateur"></app-utilisateurs-details>
 </div>

@@ -1,0 +1,17 @@
+#utilisateur-list {
+    float: left;
+    width: 45%;
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid;
+    height: 100%;
+}
+
+#utilisateur-details {
+    float: right;
+    width: 45%;
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid;
+    height: 100%;
+}
