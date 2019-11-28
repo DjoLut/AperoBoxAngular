@@ -1,7 +1,7 @@
 <p>utilisateurs-list works!</p>
 
-<div *ngIf="utilisateurs">
-    <ul *ngFor="let util of utilisateurs">
-        <li>{util.nom} {util.prenom}</li>
+<div>
+    <ul *ngIf="utilisateurs">
+        <li *ngFor="let util of utilisateurs">{{util.nom}} {{util.prenom}}</li>
     </ul>
 </div>
