@@ -2,14 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Utilisateur } from '../Model/Utilisateur';
 import { Observable } from 'rxjs';
+import { Constantes } from '../Constantes';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilisateurService {
-
-  //private apiBaseUrl = "https://aperoboxapi.azurewebsites.net/api/";
-  private apiBaseUrl = "https://localhost:5001/api/";
 
   /*private httpOptions = {
     headers: new HttpHeaders({
@@ -22,11 +20,11 @@ export class UtilisateurService {
 
 
   getAllUtilisateur(): Observable<Utilisateur[]> {
-    return this.http.get<Utilisateur[]>(`${this.apiBaseUrl}Utilisateur`/*, this.httpOptions*/);
+    return this.http.get<Utilisateur[]>(`${Constantes.URL_API}Utilisateur`/*, this.httpOptions*/);
   }
 
   getUtilisateurById(id: number): Observable<Utilisateur> {
-    return this.http.get<Utilisateur>(`${this.apiBaseUrl}Utilisateur/${id}`);
+    return this.http.get<Utilisateur>(`${Constantes.URL_API}Utilisateur/${id}`);
   }
 
 }
