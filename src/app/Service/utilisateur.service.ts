@@ -27,4 +27,12 @@ export class UtilisateurService {
     return this.http.get<Utilisateur>(`${Constantes.URL_API}Utilisateur/${id}`);
   }
 
+  getUtilisateurByUsername(username: string): Observable<Utilisateur>{
+    return this.http.get<Utilisateur>(`$${Constantes.URL_API}Utilisateur/${username}`)
+  }
+
+  getUtilisateurByMail(mail: string): Observable<Utilisateur>{
+    return this.http.get<Utilisateur>(`$${Constantes.URL_API}Utilisateur/${mail}`)
+  }
+
 }

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Box } from 'src/app/Model/Box';
 
 @Component({
   selector: 'app-box-details',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoxDetailsComponent implements OnInit {
 
+  @Input() box: Observable<Box>;
+
   constructor() { }
 
   ngOnInit() {
   }
+
+  
 
 }
