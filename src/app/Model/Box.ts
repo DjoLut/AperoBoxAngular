@@ -1,4 +1,8 @@
-export interface Box {
+import { Commentaire } from './Commentaire';
+import { LigneCommande } from './LigneCommande';
+import { LigneProduit } from './LigneProduit';
+
+export class Box {
     id: Number;
     nom: String;
     prixUnitaireHTVA: Number;
@@ -8,4 +12,7 @@ export interface Box {
     photo: String;
     affichable: Boolean;
     dateCreation: Date;
+    commentaire: Commentaire[];
+    ligneCommande: LigneCommande[];
+    ligneProduit: LigneProduit[];
 }

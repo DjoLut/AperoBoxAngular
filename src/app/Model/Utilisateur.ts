@@ -1,6 +1,8 @@
 import { Adresse } from './Adresse';
+import { Commande } from './Commande';
+import { Commentaire } from './Commentaire';
 
-export interface Utilisateur {
+export class Utilisateur {
     id: Number;
     nom: String;
     prenom: String;
@@ -12,4 +14,6 @@ export interface Utilisateur {
     authorities: String;
     motDePasse: String;
     adresse: Adresse;
+    commande: Commande[];
+    commentaire: Commentaire[];
 }

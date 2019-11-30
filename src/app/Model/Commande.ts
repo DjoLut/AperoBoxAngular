@@ -1,10 +1,12 @@
 import { Utilisateur } from './Utilisateur';
 import { Adresse } from './Adresse';
+import { LigneCommande } from './LigneCommande';
 
-export interface Commande {
+export class Commande {
     id: Number;
     dateCreation: Date;
     promotion: Number;
-    Utilisateur: Utilisateur;
-    Adresse: Adresse;
+    utilisateur: Utilisateur;
+    adresse: Adresse;
+    ligneCommande: LigneCommande[];
 }

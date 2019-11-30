@@ -1,7 +1,7 @@
 import { Utilisateur } from './Utilisateur';
 import { Box } from './Box';
 
-export interface Commentaire {
+export class Commentaire {
     id: Number;
     texte: String;
     dateCreation: Date;
