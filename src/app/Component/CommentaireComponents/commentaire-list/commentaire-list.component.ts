@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Box } from 'src/app/Model/Box';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-commentaire-list',
@@ -6,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./commentaire-list.component.css']
 })
 export class CommentaireListComponent implements OnInit {
+
+  @Input() box: Box;
 
   constructor() { }
 

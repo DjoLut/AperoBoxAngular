@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Produit } from '../Model/Produit';
 import { Constantes } from '../Constantes';
+import { Box } from '../Model/Box';
 
 @Injectable({
   providedIn: 'root'
@@ -14,5 +15,5 @@ export class ProduitService {
   getAllProduit(): Observable<Produit[]> {
     return this.http.get<Produit[]>(`${Constantes.URL_API}Produit`);
   }
-
+  
 }

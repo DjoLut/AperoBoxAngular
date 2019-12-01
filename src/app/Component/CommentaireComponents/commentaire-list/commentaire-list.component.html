@@ -1,14 +1,9 @@
 <div>
     <h3>Liste des commentaires : </h3>
-    <ul>
-        <li>ComTest1</li>
-        <li>ComTest2</li>
-        <li>ComTest3</li>
-        <li>ComTest4</li>
-        <li>ComTest5</li>
-        <li>ComTest6</li>
-        <li>ComTest7</li>
-        <li>ComTest8</li>
-        <li>ComTest9</li>
+    <p *ngIf="box.commentaire">Aucun commentaire pour cette box</p>
+    <ul *ngIf="box">
+        <li *ngFor="let com of box.commentaire">
+            {{com.id}} : {{com.texte}}
+        </li>
     </ul>
 </div>

@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class UtilisateursDetailsComponent implements OnInit {
 
-  @Input() utilisateur: Observable<Utilisateur>;
+  @Input() utilisateur: Utilisateur;
 
   constructor() { }
 

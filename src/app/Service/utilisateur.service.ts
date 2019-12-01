@@ -28,11 +28,11 @@ export class UtilisateurService {
   }
 
   getUtilisateurByUsername(username: string): Observable<Utilisateur>{
-    return this.http.get<Utilisateur>(`$${Constantes.URL_API}Utilisateur/${username}`)
+    return this.http.get<Utilisateur>(`${Constantes.URL_API}Utilisateur/${username}`)
   }
 
   getUtilisateurByMail(mail: string): Observable<Utilisateur>{
-    return this.http.get<Utilisateur>(`$${Constantes.URL_API}Utilisateur/${mail}`)
+    return this.http.get<Utilisateur>(`${Constantes.URL_API}Utilisateur/${mail}`)
   }
 
 }

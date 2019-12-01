@@ -4,6 +4,7 @@ import { Box } from 'src/app/Model/Box';
 import { Router } from '@angular/router';
 import { Produit } from 'src/app/Model/Produit';
 import { LigneProduit } from 'src/app/Model/LigneProduit';
+import { ProduitService } from 'src/app/Service/produit.service';
 
 @Component({
   selector: 'app-box-list',
@@ -40,7 +41,6 @@ export class BoxListComponent implements OnInit {
   }
 
   ajouterBox() {
-    
   }
 
 }
