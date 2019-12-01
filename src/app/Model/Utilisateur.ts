@@ -3,16 +3,16 @@ import { Commande } from './Commande';
 import { Commentaire } from './Commentaire';
 
 export class Utilisateur {
-    id: Number;
-    nom: String;
-    prenom: String;
+    id: number;
+    nom: string;
+    prenom: string;
     dateNaissance: Date;
-    mail: String;
-    telephone: Number;
-    gsm: Number;
-    username: String;
-    authorities: String;
-    motDePasse: String;
+    mail: string;
+    telephone: number;
+    gsm: number;
+    username: string;
+    authorities: string;
+    motDePasse: string;
     adresse: Adresse;
     commande: Commande[];
     commentaire: Commentaire[];

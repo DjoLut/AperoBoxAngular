@@ -3,9 +3,9 @@ import { Adresse } from './Adresse';
 import { LigneCommande } from './LigneCommande';
 
 export class Commande {
-    id: Number;
+    id: number;
     dateCreation: Date;
-    promotion: Number;
+    promotion: number;
     utilisateur: Utilisateur;
     adresse: Adresse;
     ligneCommande: LigneCommande[];

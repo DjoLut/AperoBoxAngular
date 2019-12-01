@@ -3,8 +3,8 @@ import { Box } from './Box';
 import { Produit } from './Produit';
 
 export class LigneCommande {
-    id: Number;
-    quantite: Number;
+    id: number;
+    quantite: number;
     commande: Commande;
     box: Box;
     produit: Produit;

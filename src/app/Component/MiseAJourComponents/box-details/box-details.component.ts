@@ -9,13 +9,11 @@ import { Box } from 'src/app/Model/Box';
 })
 export class BoxDetailsComponent implements OnInit {
 
-  @Input() box: Observable<Box>;
+  @Input() box: Box;
 
   constructor() { }
 
   ngOnInit() {
-  }
-
-  
+  }  
 
 }

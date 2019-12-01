@@ -2,8 +2,8 @@ import { Utilisateur } from './Utilisateur';
 import { Box } from './Box';
 
 export class Commentaire {
-    id: Number;
-    texte: String;
+    id: number;
+    texte: string;
     dateCreation: Date;
     utilisateur: Utilisateur;
     box: Box;

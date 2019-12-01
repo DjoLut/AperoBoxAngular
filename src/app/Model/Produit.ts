@@ -2,12 +2,12 @@ import { LigneCommande } from './LigneCommande';
 import { LigneProduit } from './LigneProduit';
 
 export class Produit {
-    id: Number;
-    prixUnitaireHTVA: Number;
-    tva: Number;
-    nom: String;
+    id: number;
+    prixUnitaireHTVA: number;
+    tva: number;
+    nom: string;
     datePeremption: Date;
-    alcool: Boolean;
+    alcool: boolean;
     ligneCommande: LigneCommande[];
     ligneProduit: LigneProduit[];
 }

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { BoxService } from 'src/app/Service/box.service';
 import { Box } from 'src/app/Model/Box';
+import { Router } from '@angular/router';
+import { Produit } from 'src/app/Model/Produit';
+import { LigneProduit } from 'src/app/Model/LigneProduit';
 
 @Component({
   selector: 'app-box-list',
@@ -9,24 +12,34 @@ import { Box } from 'src/app/Model/Box';
 })
 export class BoxListComponent implements OnInit {
 
-
-  boxs: Array<Box>;
+  boxes: Box[];
   selectedBox: Box;
 
-  constructor(private boxService: BoxService) { }
+  constructor(
+    private boxService: BoxService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
-    this.boxs = new Array<Box>();
+    this.boxes = new Array();
     this.boxService.getAllBox().subscribe((data) => {
-      this.boxs = data;
+      this.boxes = data;
     });
   }
 
-  selectBox(box: Box){
+  isUpdateRoute() {
+    return this.router.url === '/update';
+  }
+
+  isCommentaireRoute() {
+    return this.router.url === '/commentaire';
+  }
+
+  selectBox(box: Box) {
     this.selectedBox = box;
   }
 
-  ajouterBox(){
+  ajouterBox() {
     
   }
 

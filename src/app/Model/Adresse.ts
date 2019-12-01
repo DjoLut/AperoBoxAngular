@@ -2,12 +2,12 @@ import { Commande } from './Commande';
 import { Utilisateur } from './Utilisateur';
 
 export class Adresse {
-    id: Number;
-    rue: String;
-    numero: Number;
-    localite: String;
-    codePostal: Number;
-    pays: String;
+    id: number;
+    rue: string;
+    numero: number;
+    localite: string;
+    codePostal: number;
+    pays: string;
     commande: Commande[];
     utilisateur: Utilisateur[];
 }

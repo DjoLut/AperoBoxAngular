@@ -2,8 +2,8 @@ import { Box } from './Box';
 import { Produit } from './Produit';
 
 export class LigneProduit {
-    id: Number;
-    quantite: Number;
+    id: number;
+    quantite: number;
     box: Box;
     produit: Produit;
 }

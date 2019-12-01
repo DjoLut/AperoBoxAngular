@@ -3,24 +3,23 @@
     <form>
         <div>
             <label for="nomBox">Nom : </label>
-            <input type="text" id="nomBox" placeholder="BoxTest" value="{{box.nom}}">
+            <input type="text" id="nomBox" placeholder="Nom de la box" value="{{box.nom}}">
         </div>
         <div>
             <label for="prix">Prix : </label>
-            <input type="number" id="prix" placeholder="12.21" value="{{box.prixUnitaireHTVA}}">
+            <input type="number" id="prix" step="any" min="0" max="1000" placeholder="12.21" value="{{box.prixUnitaireHTVA || 0}}">
         </div>
         <div>
             <label for="promo">Promotion : </label>
-            <input type="number" id="promo" placeholder="21" value="{{box.promotion}}">
+            <input type="number" id="promo" placeholder="21" value="{{box.promotion || 0}}">
         </div>
         <div>
             <label for="description">Description : </label>
-            <input type="text" id="description" placeholder="Description box" value="{{box.description}}">
+            <input type="text" id="description" placeholder="Description de la box" value="{{box.description}}">
         </div>
         <div class="button">
-            <button *ngIf="!box" type="submit">Ajouter</button>
-            <button *ngIf="box" type="submit">Modifier</button>
-            <button *ngIf="box" type="submit">Supprimer</button>
+            <button type="submit">Ajouter/Modifer</button>
+            <button type="submit">Supprimer</button>
         </div>
     </form>
 </div>
