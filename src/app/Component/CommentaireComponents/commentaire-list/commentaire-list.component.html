@@ -1,9 +1,12 @@
 <div>
     <h3>Liste des commentaires : </h3>
-    <p *ngIf="box.commentaire">Aucun commentaire pour cette box</p>
+    <p *ngIf="!box.commentaire">Aucun commentaire pour cette box</p>
     <ul *ngIf="box">
         <li *ngFor="let com of box.commentaire">
-            {{com.id}} : {{com.texte}}
+            <a (click)="selectCommentaire(com)">{{com.id}} : {{com.texte}}</a>
         </li>
     </ul>
+    <div *ngIf="box.commentaire" class="button">
+        <button type="submit" (click)="suppressionCommentaire(selectedCommentaire)">Supprimer</button>
+    </div>
 </div>

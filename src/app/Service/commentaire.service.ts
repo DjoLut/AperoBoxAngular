@@ -16,5 +16,8 @@ export class CommentaireService {
     return this.http.get<Commentaire[]>(`${Constantes.URL_API}Commentaire`);
   }
 
+  supprimerCommentaire(commentaire: Commentaire): Observable<Commentaire> {
+    return this.http.delete<Commentaire>(`${Constantes.URL_API}Commentaire/${commentaire.id}`);
+  }
 
 }

@@ -22,9 +22,11 @@ export class ProduitService {
   }
 
   completeListeProduitQuantite(produits: Produit[], box: Box) {
+    this.listeProduitQuantite.length = 0;
+
     if(box==null){
       produits.forEach(prod => {
-          this.listeProduitQuantite.push({produit: prod, quantite: 5})
+          this.listeProduitQuantite.push({produit: prod, quantite: 0})
       });
     }
     else {
@@ -35,15 +37,11 @@ export class ProduitService {
           if(lp.box == box.id)
           {
             this.listeProduitQuantite.push({produit: prod, quantite: lp.quantite});
-            //this.listeProduitQuantite[i].produit = prod;
-            //this.listeProduitQuantite[i].quantite = lp.quantite;
             this.estTrouve = true;
           }
         });
         if(!this.estTrouve) {
           this.listeProduitQuantite.push({produit: prod, quantite: 0})
-          //this.listeProduitQuantite[i].produit = prod;
-          //this.listeProduitQuantite[i].quantite = 0;
         }
         i++;
       });
