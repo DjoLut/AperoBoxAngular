@@ -10,16 +10,24 @@
             <input type="number" id="prix" step="any" min="0" max="1000" placeholder="12.21" value="{{box.prixUnitaireHtva || 0}}">
         </div>
         <div>
+            <label for="tva">Tva : </label>
+            <input type="number" id="tva" placeholder="21" value="{{box.tva || 0}}">
+        </div>
+        <div>
             <label for="promo">Promotion : </label>
-            <input type="number" id="promo" placeholder="21" value="{{box.promotion || 0}}">
+            <input type="number" id="promo" placeholder="10" value="{{box.promotion || 0}}">
         </div>
         <div>
             <label for="description">Description : </label>
             <input type="text" id="description" placeholder="Description de la box" value="{{box.description}}">
         </div>
+        <div>
+            <label for="photo">Photo : </label>
+            <input type="text" id="photo" placeholder="Lien de la photo" value="{{box.photo}}">
+        </div>
         <div class="button">
             <button type="submit">Ajouter/Modifer</button>
-            <button type="submit">Supprimer</button>
+            <button type="submit" (click)="suppressionBox(box)">Supprimer</button>
         </div>
     </form>
 </div>

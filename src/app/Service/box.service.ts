@@ -18,4 +18,9 @@ export class BoxService {
   getBoxById(id: number): Observable<Box>{
     return this.http.get<Box>(`${Constantes.URL_API}Box/${id}`);
   }
+
+  supprimerBox(box: Box): Observable<Box> {
+    return this.http.delete<Box>(`${Constantes.URL_API}Box/${box.id}`);
+  }
+
 }

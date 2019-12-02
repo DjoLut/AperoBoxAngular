@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { Produit } from 'src/app/Model/Produit';
 import { LigneProduit } from 'src/app/Model/LigneProduit';
 import { ProduitService } from 'src/app/Service/produit.service';
+import { Adresse } from 'src/app/Model/Adresse';
+import { AdresseService } from 'src/app/Service/adresse.service';
 
 @Component({
   selector: 'app-box-list',
@@ -43,7 +45,7 @@ export class BoxListComponent implements OnInit {
     return this.router.url === '/commentaire';
   }
 
-  selectBox(box: Box) {
+  selectBox(box?: Box) {
     this.selectedBox = box;
     this.produitService.completeListeProduitQuantite(this.produits, box);
   }

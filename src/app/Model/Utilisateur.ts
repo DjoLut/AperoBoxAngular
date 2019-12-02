@@ -1,4 +1,3 @@
-import { Adresse } from './Adresse';
 import { Commande } from './Commande';
 import { Commentaire } from './Commentaire';
 
@@ -13,7 +12,7 @@ export class Utilisateur {
     username: string;
     authorities: string;
     motDePasse: string;
-    adresse: Adresse;
+    adresse: number;
     commande: Commande[];
     commentaire: Commentaire[];
 }

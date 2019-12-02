@@ -21,7 +21,7 @@ export class ProduitService {
     return this.http.get<Produit[]>(`${Constantes.URL_API}Produit`);
   }
 
-  completeListeProduitQuantite(produits: Produit[], box: Box) {
+  completeListeProduitQuantite(produits: Produit[], box?: Box) {
     this.listeProduitQuantite.length = 0;
 
     if(box==null){

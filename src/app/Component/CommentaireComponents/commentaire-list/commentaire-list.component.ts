@@ -24,7 +24,7 @@ export class CommentaireListComponent implements OnInit {
     this.selectedCommentaire = commentaire;
   }
 
-  suppressionCommentaire(commentaire : Commentaire) {
+  suppressionCommentaire(commentaire: Commentaire) {
     this.commentaireService.supprimerCommentaire(commentaire).subscribe(elem => {
       window.location.reload();
     }); //ERROR ETC ..... à faire plus tard

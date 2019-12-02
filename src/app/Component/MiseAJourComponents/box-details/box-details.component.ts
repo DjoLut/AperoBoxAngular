@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Box } from 'src/app/Model/Box';
+import { BoxService } from 'src/app/Service/box.service';
 
 @Component({
   selector: 'app-box-details',
@@ -11,9 +12,15 @@ export class BoxDetailsComponent implements OnInit {
 
   @Input() box: Box;
 
-  constructor() { }
+  constructor(private boxService: BoxService) { }
 
   ngOnInit() {
-  }  
+  }
+
+  suppressionBox(box: Box) {
+    this.boxService.supprimerBox(box).subscribe(elem => {
+      window.location.reload();
+    }); //ERROR ETC ..... à faire plus tard
+  }
 
 }
