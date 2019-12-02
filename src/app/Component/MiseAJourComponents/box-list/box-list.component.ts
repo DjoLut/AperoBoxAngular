@@ -15,9 +15,11 @@ export class BoxListComponent implements OnInit {
 
   boxes: Box[];
   selectedBox: Box;
+  produits: Produit[];
 
   constructor(
     private boxService: BoxService,
+    private produitService: ProduitService,
     private router: Router
   ) { }
 
@@ -25,6 +27,11 @@ export class BoxListComponent implements OnInit {
     this.boxes = new Array();
     this.boxService.getAllBox().subscribe((data) => {
       this.boxes = data;
+    });
+
+    this.produits = new Array();
+    this.produitService.getAllProduit().subscribe((data) => {
+      this.produits = data;
     });
   }
 
@@ -38,6 +45,7 @@ export class BoxListComponent implements OnInit {
 
   selectBox(box: Box) {
     this.selectedBox = box;
+    this.produitService.completeListeProduitQuantite(this.produits, box);
   }
 
   ajouterBox() {

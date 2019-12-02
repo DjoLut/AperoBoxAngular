@@ -13,9 +13,8 @@ export class ProduitListComponent implements OnInit {
 
   @Input() box: Box;
   produits: Produit[];
-
-  listeProduitQuantite:Array<{produit:Produit, quantite:number}>;
-
+  
+  listeProduitQuantite: Array<{produit:Produit, quantite:number}>;
 
   constructor(private produitService: ProduitService) { }
 
@@ -24,7 +23,8 @@ export class ProduitListComponent implements OnInit {
     this.produitService.getAllProduit().subscribe((data) => {
       this.produits = data;
     });
-    this.listeProduitQuantite = this.produitService.completeListeProduitQuantite(this.produits, this.box);
+
+    this.listeProduitQuantite = this.produitService.listeProduitQuantite;
   } 
 
 }

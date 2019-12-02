@@ -4,9 +4,7 @@
     <ul *ngIf="produits">
         <li *ngFor="let prod of produits">{{prod.nom}} : 
             <div *ngFor="let lp of prod.ligneProduit">
-                <input type="number" *ngIf="box==null || lp.box != box.id" value="0">
                 <input type="number" *ngIf="lp.box == box.id" value="{{lp.quantite}}">
-                
             </div>
         </li>
     </ul>
@@ -17,8 +15,8 @@
 <div>
     <h3>Listes des produits de la box : </h3>
     <ul *ngIf="listeProduitQuantite">
-        <li *ngFor="let prod of listeProduitQuantite">{{prod.produit.nom}} : {{prod.quantite}}
-            
+        <li *ngFor="let prod of listeProduitQuantite">{{prod.produit.nom}} : 
+            <input type="number" value="{{prod.quantite}}">
         </li>
     </ul>
 </div>
