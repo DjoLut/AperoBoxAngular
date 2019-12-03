@@ -1,20 +1,22 @@
-<div id="box-list">
-    <h3>Listes des boxes : </h3>
-    <ul *ngIf="boxes">
-        <li *ngIf="isUpdateRoute()"><a (click)="selectBox('')">Créer une nouvelle box</a></li>
-        <li *ngFor="let box of boxes"><a (click)="selectBox(box)">{{box.nom}}</a></li>
-    </ul>
-</div>
-<div *ngIf="isUpdateRoute()">
-    <div id="box-details">
-        <app-box-details [box]="selectedBox"></app-box-details>
+<div class="containerlistebox">
+    <div id="box-list">
+        <h3>Listes des boxes : </h3>
+        <ul *ngIf="boxes">
+            <li *ngIf="isUpdateRoute()"><a (click)="selectBox('')">Créer une nouvelle box</a></li>
+            <li *ngFor="let box of boxes"><a (click)="selectBox(box)">{{box.nom}}</a></li>
+        </ul>
     </div>
-    <div id="produit-list">
-        <app-produit-list [box]="selectedBox"></app-produit-list>
+    <div *ngIf="isUpdateRoute()">
+        <div id="box-details">
+            <app-box-details [box]="selectedBox"></app-box-details>
+        </div>
+        <div id="produit-list">
+            <app-produit-list [box]="selectedBox"></app-produit-list>
+        </div>
     </div>
-</div>
-<div *ngIf="isCommentaireRoute()">
-    <div id="commentaire-list">
-        <app-commentaire-list [box]="selectedBox"></app-commentaire-list>
+    <div *ngIf="isCommentaireRoute()">
+        <div id="commentaire-list">
+            <app-commentaire-list [box]="selectedBox"></app-commentaire-list>
+        </div>
     </div>
 </div>

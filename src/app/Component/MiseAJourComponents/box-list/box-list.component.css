@@ -1,3 +1,9 @@
+.containerlistebox{
+    min-width: 300px;
+    width:100%;
+    display: inline-block;
+}
+
 #box-list {
     float: left;
     width: 31%;

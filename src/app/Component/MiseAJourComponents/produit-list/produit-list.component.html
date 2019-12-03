@@ -12,11 +12,13 @@
 -->
 
 
-<div>
+<div class="containerlisteproduit">
     <h3>Listes des produits de la box : </h3>
-    <ul *ngIf="listeProduitQuantite">
-        <li *ngFor="let prod of listeProduitQuantite">{{prod.produit.nom}} : 
+    <ul class="listeProduit" *ngIf="listeProduitQuantite">
+        <div class="box">
+        <li class="produit" *ngFor="let prod of listeProduitQuantite">{{prod.produit.nom}} : 
             <input type="number" value="{{prod.quantite}}">
         </li>
+    </div>
     </ul>
 </div>

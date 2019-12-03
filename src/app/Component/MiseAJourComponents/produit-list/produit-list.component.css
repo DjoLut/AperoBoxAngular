@@ -1,0 +1,28 @@
+.containerlisteproduit{
+    min-width: 300px;
+    width:100%;
+    display: inline-block;
+}
+
+.listeProduit{
+    display: block;
+}
+
+
+.box{
+    display: block;
+    height: 20%;
+}
+
+.listeProduit .box li{
+    width: 100%;
+    margin:1%;
+}
+
+.listeProduit .box input{
+    max-width: 60%;
+    min-width: 40%;
+    width: 60%;
+    margin-block-start: 0%s;
+    float:right;
+}

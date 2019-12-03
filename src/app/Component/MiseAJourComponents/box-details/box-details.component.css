@@ -1,3 +1,9 @@
+#boxForm{
+    min-width: 300px;
+    width:100%;
+    display: inline-block;
+}
+
 label {
     margin: 10px;
     padding: 10px;
