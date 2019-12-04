@@ -35,6 +35,10 @@ export class UtilisateurService {
     return this.http.get<Utilisateur>(`${Constantes.URL_API}Utilisateur/${mail}`)
   }
 
+  modifierUtilisateur(utilisateur: Utilisateur): Observable<Utilisateur> {
+    return this.http.put<Utilisateur>(`${Constantes.URL_API}Utilisateur`, utilisateur);
+  }
+
   supprimerUtilisateur(utilisateur: Utilisateur): Observable<Utilisateur> {
     return this.http.delete<Utilisateur>(`${Constantes.URL_API}Utilisateur/${utilisateur.id}`);
   }

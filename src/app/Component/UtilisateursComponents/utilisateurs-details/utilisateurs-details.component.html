@@ -1,61 +1,63 @@
 <h3>Utilisateur : </h3>
-<form>
+<form [formGroup]="editUtilisateur">
     <div class="ligneForm">
-        <label for="nom">Nom : </label>
-        <input type="text" id="nom" placeholder="Nom" value="{{utilisateur.nom}}">
+        <label>Nom : </label>
+        <input type="text" formControlName="nom" placeholder="Nom" required value="{{utilisateur.nom}}">
     </div>
     <div class="ligneForm">
         <label for="prenom">Prénom : </label>
-        <input type="text" id="prenom" placeholder="Prénom" value="{{utilisateur.prenom}}">
+        <input type="text" formControlName="prenom" placeholder="Prénom" required value="{{utilisateur.prenom}}">
     </div>
     <div class="ligneForm">
-        <label for="age">Age : </label>
-        <input type="date" id="age" value="{{utilisateur.dateNaissance | date: 'yyyy-MM-dd'}}">
+        <label for="dateNaissance">Age : </label>
+        <input type="date" formControlName="dateNaissance" required value="{{utilisateur.dateNaissance | date: 'yyyy-MM-dd'}}">
     </div>
     <div class="ligneForm">
-        <label for="email">Email : </label>
-        <input type="email" id="email" placeholder="example@hotmail.com" value="{{utilisateur.mail}}">
+        <label for="mail">Email : </label>
+        <input type="email" formControlName="mail" required placeholder="example@hotmail.com" value="{{utilisateur.mail}}">
     </div>
     <div class="ligneForm">
         <label for="telephone">Téléphone : </label>
-        <input type="tel" id="telephone" placeholder="062 35 64 87" value="{{utilisateur.telephone || 0}}">
+        <input type="tel" formControlName="telephone" placeholder="062 35 64 87" value="{{utilisateur.telephone || 0}}">
     </div>
     <div class="ligneForm">
         <label for="gsm">Gsm : </label>
-        <input type="tel" id="gsm" placeholder="0473 58 48 96" value="{{utilisateur.gsm || 0}}">
+        <input type="tel" formControlName="gsm" required placeholder="0473 58 48 96" value="{{utilisateur.gsm || 0}}">
     </div>
     <div class="ligneForm">
         <label for="username">Username : </label>
-        <input type="text" id="username" placeholder="Username" value="{{utilisateur.username}}">
+        <input type="text" formControlName="username" required placeholder="Username" value="{{utilisateur.username}}">
     </div>
     <div class="ligneForm">
         <label>Droits : </label>
-        <input type="checkbox" id="droit" name="droit">
-        <label htmlFor="droit" for="droit">Admin</label>
+        <input type="checkbox" name="droit">
+        <label htmlFor="authorities" for="authorities">Admin</label>
     </div>
-    <label for="adresse">Adresse</label>
-    <div class="ligneForm">
-        <label for="rue">Rue : </label>
-        <input type="text" id="rue" placeholder="Rue" value="{{adresse.rue}}">
-    </div>
-    <div class="ligneForm">
-        <label for="numero">Numéro : </label>
-        <input type="number" id="numero" placeholder="Numéro" value="{{adresse.numero}}">
-    </div>
-    <div class="ligneForm">
-        <label for="localite">Localité : </label>
-        <input type="text" id="localite" placeholder="Localité" value="{{adresse.localite}}">
-    </div>
-    <div class="ligneForm">
-        <label for="codePostal">Code Postal : </label>
-        <input type="number" id="codePostal" placeholder="Code Postal" value="{{adresse.codePostal}}">
-    </div>
-    <div class="ligneForm">
-        <label for="pays">Pays : </label>
-        <input type="text" id="pays" placeholder="Pays" value="{{adresse.pays}}">
-    </div>
+    <form [formGroup]="editAdresse">
+        <h3>Adresse</h3>
+        <div class="ligneForm">
+            <label for="rue">Rue : </label>
+            <input type="text" formControlName="rue" placeholder="Rue" value="{{adresse.rue}}">
+        </div>
+        <div class="ligneForm">
+            <label for="numero">Numéro : </label>
+            <input type="number" formControlName="numero" placeholder="Numéro" value="{{adresse.numero}}">
+        </div>
+        <div class="ligneForm">
+            <label for="localite">Localité : </label>
+            <input type="text" formControlName="localite" placeholder="Localité" value="{{adresse.localite}}">
+        </div>
+        <div class="ligneForm">
+            <label for="codePostal">Code Postal : </label>
+            <input type="number" formControlName="codePostal" placeholder="Code Postal" value="{{adresse.codePostal}}">
+        </div>
+        <div class="ligneForm">
+            <label for="pays">Pays : </label>
+            <input type="text" formControlName="pays" placeholder="Pays" value="{{adresse.pays}}">
+        </div>
+    </form>
     <div class="button">
-        <button type="submit">Modifier</button>
+        <button type="submit" (click)="modifierUtilisateur()">Modifier</button>
         <button type="submit" (click)="suppressionUtilisateur(utilisateur)">Supprimer</button>
     </div>
 </form>

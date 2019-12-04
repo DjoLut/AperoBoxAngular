@@ -15,4 +15,8 @@ export class AdresseService {
     return this.http.get<Adresse>(`${Constantes.URL_API}Adresse/${id}`);
   }
 
+  ajouterAdresse(adresse: Adresse): Observable<Adresse> {
+    return this.http.post<Adresse>(`${Constantes.URL_API}Adresse`, adresse);
+  }
+
 }
