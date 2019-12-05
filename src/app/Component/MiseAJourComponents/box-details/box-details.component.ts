@@ -19,9 +19,11 @@ export class BoxDetailsComponent implements OnInit {
   }
 
   suppressionBox(box: Box) {
-    this.boxService.supprimerBox(box).subscribe(elem => {
-      window.location.reload();
-    }); //ERROR ETC ..... à faire plus tard
+    if(confirm("Voulez-vous supprimer cette box ? " + box.nom)) {
+      this.boxService.supprimerBox(box).subscribe(elem => {
+        window.location.reload();
+      }); //ERROR ETC ..... à faire plus tard
+    }
   }
 
 }

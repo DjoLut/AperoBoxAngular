@@ -26,8 +26,8 @@
             <input type="text" id="photo" placeholder="Lien de la photo" value="{{box.photo}}">
         </div>
         <div class="button">
-            <button type="submit">Ajouter/Modifer</button>
-            <button type="submit" (click)="suppressionBox(box)">Supprimer</button>
+            <button type="submit" [disabled]="box.id == null">Ajouter/Modifer</button>
+            <button type="submit" (click)="suppressionBox(box)" [disabled]="box.id == null">Supprimer</button>
         </div>
     </form>
 </div>

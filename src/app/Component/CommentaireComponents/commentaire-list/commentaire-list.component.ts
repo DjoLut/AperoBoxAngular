@@ -14,6 +14,7 @@ export class CommentaireListComponent implements OnInit {
 
   @Input() box: Box;
   selectedCommentaire: Commentaire;
+  selectedIndex: number = null;
 
   constructor(private commentaireService: CommentaireService) { }
 
@@ -21,14 +22,17 @@ export class CommentaireListComponent implements OnInit {
     this.box = new Box();
   }
 
-  selectCommentaire(commentaire: Commentaire) {
+  selectCommentaire(commentaire: Commentaire, index: number) {
     this.selectedCommentaire = commentaire;
+    this.selectedIndex = index;
   }
 
   suppressionCommentaire(commentaire: Commentaire) {
-    this.commentaireService.supprimerCommentaire(commentaire).subscribe(elem => {
-      window.location.reload();
-    }); //ERROR ETC ..... à faire plus tard
+    if(confirm("Voulez-vous supprimer ce commentaire ? ")) {
+      this.commentaireService.supprimerCommentaire(commentaire).subscribe(elem => {
+        window.location.reload();
+      }); //ERROR ETC ..... à faire plus tard
+    }
   }
 
 }

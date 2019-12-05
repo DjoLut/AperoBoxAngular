@@ -3,30 +3,39 @@
     <div class="ligneForm">
         <label>Nom : </label>
         <input type="text" formControlName="nom" placeholder="Nom" required>
+        <p *ngIf="utilisateur.id != null && editUtilisateur.get('nom').invalid">Le nom est obligatoire avec minimum 2 caractères !</p>
     </div>
     <div class="ligneForm">
         <label for="prenom">Prénom : </label>
-        <input type="text" formControlName="prenom" placeholder="Prénom" required >
+        <input type="text" formControlName="prenom" placeholder="Prénom" required>
+        <p *ngIf="utilisateur.id != null && editUtilisateur.get('prenom').invalid">Le prénom est obligatoire avec minimum 2 caractères !</p>
     </div>
     <div class="ligneForm">
         <label for="dateNaissance">Age : </label>
         <input type="date" formControlName="dateNaissance" required>
+        <p *ngIf="utilisateur.id != null && editUtilisateur.get('dateNaissance').invalid && editUtilisateur.get('dateNaissance').errors.required">La date de naissance est obligatoire !</p>
     </div>
     <div class="ligneForm">
         <label for="mail">Email : </label>
         <input type="email" formControlName="mail" required placeholder="example@hotmail.com">
+        <p *ngIf="utilisateur.id != null && editUtilisateur.get('mail').invalid && editUtilisateur.get('mail').errors.required">L'adresse mail est obligatoire !</p>
+        <p *ngIf="utilisateur.id != null && editUtilisateur.get('mail').invalid && editUtilisateur.get('mail').errors.email">L'adresse mail n'est pas valide !</p>
     </div>
     <div class="ligneForm">
-        <label for="telephone">Téléphone : </label>
+        <label for="telephone">Téléphone fixe : </label>
         <input type="tel" formControlName="telephone" placeholder="062 35 64 87">
+        <p *ngIf="utilisateur.id != null && editUtilisateur.get('telephone').invalid">Le numéro de téléphone n'est pas valide !</p>
     </div>
     <div class="ligneForm">
         <label for="gsm">Gsm : </label>
-        <input type="tel" formControlName="gsm" required placeholder="0473 58 48 96">
+        <input type="tel" formControlName="gsm" placeholder="0473 58 48 96" required>
+        <p *ngIf="utilisateur.id != null && editUtilisateur.get('gsm').invalid && editUtilisateur.get('gsm').errors.required">Le numéro de GSM est obligatoire !</p>
+        <p *ngIf="utilisateur.id != null && editUtilisateur.get('gsm').invalid && !editUtilisateur.get('gsm').errors.required">Le numéro de GSM n'est pas valide !</p>
     </div>
     <div class="ligneForm">
         <label for="username">Username : </label>
-        <input type="text" formControlName="username" required placeholder="Username">
+        <input type="text" formControlName="username" placeholder="Username" required>
+        <p *ngIf="utilisateur.id != null && editUtilisateur.get('username').invalid">Le nom d'utilisateur est obligatoire avec minimum 2 caractères !</p>
     </div>
     <div class="ligneForm">
         <label>Droits : </label>
@@ -38,28 +47,33 @@
         <div class="ligneForm">
             <label for="rue">Rue : </label>
             <input type="text" formControlName="rue" placeholder="Rue" required>
+            <p *ngIf="adresse.id != null && editAdresse.get('rue').invalid">La rue de votre adresse est obligatoire avec minimum 5 caractères !</p>
         </div>
         <div class="ligneForm">
             <label for="numero">Numéro : </label>
             <input type="number" formControlName="numero" placeholder="Numéro" required>
+            <p *ngIf="adresse.id != null && editAdresse.get('numero').invalid">Le numéro de votre habitation est obligatoire ! (minimum 1)</p>
         </div>
         <div class="ligneForm">
             <label for="localite">Localité : </label>
             <input type="text" formControlName="localite" placeholder="Localité" required>
+            <p *ngIf="adresse.id != null && editAdresse.get('localite').invalid">La localité est obligatoire avec minimum 2 caractères !</p>
         </div>
         <div class="ligneForm">
             <label for="codePostal">Code Postal : </label>
             <input type="number" formControlName="codePostal" placeholder="Code Postal" required>
+            <p *ngIf="adresse.id != null && editAdresse.get('codePostal').invalid">Le code postal est obligatoire ! (2 chiffres positifs requis)</p>
         </div>
         <div class="ligneForm">
             <label for="pays">Pays : </label>
             <input type="text" formControlName="pays" placeholder="Pays" required>
+            <p *ngIf="adresse.id != null && editAdresse.get('pays').invalid">Le pays est obligatoire avec minimum 2 caractères !</p>
         </div>
     </form>
     <div class="button">
-        <button type="submit" (click)="remplirUtilisateurForm()">Modifier</button>
+        <button type="submit" (click)="remplirUtilisateurForm()" [disabled]="!editUtilisateur.valid">Modifier</button>
     </div>
 </form>
 <div class="button">
-    <button type="submit" (click)="suppressionUtilisateur(utilisateur)">Supprimer</button>
+    <button type="submit" (click)="suppressionUtilisateur(utilisateur)" [disabled]="utilisateur.id == null">Supprimer</button>
 </div>

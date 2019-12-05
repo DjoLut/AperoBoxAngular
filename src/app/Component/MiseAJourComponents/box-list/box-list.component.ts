@@ -18,6 +18,7 @@ export class BoxListComponent implements OnInit {
   boxes: Box[];
   selectedBox: Box;
   produits: Produit[];
+  selectedIndex: number = null;
 
   constructor(
     private boxService: BoxService,
@@ -45,9 +46,10 @@ export class BoxListComponent implements OnInit {
     return this.router.url === '/commentaire';
   }
 
-  selectBox(box?: Box) {
+  selectBox(box?: Box, index?: number) {
     this.selectedBox = box;
     this.produitService.completeListeProduitQuantite(this.produits, box);
+    this.selectedIndex = index;
   }
 
   ajouterBox() {

@@ -16,23 +16,24 @@ export class UtilisateursListComponent implements OnInit {
   utilisateurs: Utilisateur[];
   selectedUtilisateur: Utilisateur;
   selectedAdresse: Adresse;
+  selectedIndex: number = null;
 
   editUtilisateur = new FormGroup({
-    nom: new FormControl('', Validators.required),
-    prenom: new FormControl('', Validators.required),
+    nom: new FormControl('', [Validators.required, Validators.minLength(2)]),
+    prenom: new FormControl('', [Validators.required, Validators.minLength(2)]),
     dateNaissance: new FormControl('yyyy-MM-dd', Validators.required),
     mail: new FormControl('', [Validators.required, Validators.email]),
-    telephone: new FormControl(''),
-    gsm: new FormControl('', Validators.required),
-    username: new FormControl('', Validators.required)
+    telephone: new FormControl('', [Validators.pattern('^[0-9]*$'), Validators.maxLength(9), Validators.minLength(9)]),
+    gsm: new FormControl('', [Validators.pattern('^[0-9]*$'), Validators.maxLength(10), Validators.minLength(10), Validators.required]),
+    username: new FormControl('', [Validators.required, Validators.minLength(2)])
   });
 
   editAdresse = new FormGroup({
-    rue: new FormControl('', Validators.required),
-    numero: new FormControl('', Validators.required),
-    localite: new FormControl('', Validators.required),
-    codePostal: new FormControl('', Validators.required),
-    pays: new FormControl('', Validators.required),
+    rue: new FormControl('', [Validators.required, Validators.minLength(5)]),
+    numero: new FormControl('', [Validators.required, Validators.min(1)]),
+    localite: new FormControl('', [Validators.required, Validators.minLength(2)]),
+    codePostal: new FormControl('', [Validators.required, Validators.min(10)]),
+    pays: new FormControl('', [Validators.required, Validators.minLength(2)])
   });
 
   constructor(
@@ -47,23 +48,29 @@ export class UtilisateursListComponent implements OnInit {
     });
   }
 
-  selectUtilisateur(utilisateur: Utilisateur) {
+  selectUtilisateur(utilisateur: Utilisateur, index: number) {
     this.selectedUtilisateur = utilisateur;
     this.adresseService.getAdresseById(utilisateur.adresse).subscribe(data => {
         this.selectedAdresse = data;
         this.remplirFormulaire(utilisateur);
     });
+    this.selectedIndex = index;
   }
 
   remplirFormulaire(utilisateur: Utilisateur) {
+    var telephone;
+    if(utilisateur.telephone != null)
+      telephone = "0" + utilisateur.telephone;
+    else
+      telephone = utilisateur.telephone;
     let date: Date = new Date(utilisateur.dateNaissance);
     this.editUtilisateur.patchValue({
       nom: utilisateur.nom,
       prenom: utilisateur.prenom,
       dateNaissance: date.toISOString().substring(0,10),
       mail: utilisateur.mail,
-      telephone: utilisateur.telephone,
-      gsm: utilisateur.gsm,
+      telephone: telephone,
+      gsm: "0" + utilisateur.gsm,
       username: utilisateur.username
     })
 

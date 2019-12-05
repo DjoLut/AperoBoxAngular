@@ -1,17 +1,3 @@
-<!--
-<div>
-    <h3>Listes des produits de la box : </h3>
-    <ul *ngIf="produits">
-        <li *ngFor="let prod of produits">{{prod.nom}} : 
-            <div *ngFor="let lp of prod.ligneProduit">
-                <input type="number" *ngIf="lp.box == box.id" value="{{lp.quantite}}">
-            </div>
-        </li>
-    </ul>
-</div>
--->
-
-
 <div class="containerlisteproduit">
     <h3>Listes des produits de la box : </h3>
     <ul class="listeProduit" *ngIf="listeProduitQuantite">
