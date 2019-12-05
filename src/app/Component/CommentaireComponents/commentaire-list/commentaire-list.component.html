@@ -6,7 +6,7 @@
             <a (click)="selectCommentaire(com)">{{com.id}} : {{com.texte}}</a>
         </li>
     </ul>
-    <div *ngIf="box.commentaire" class="button">
+    <div *ngIf="box.commentaire == undefined" class="button">
         <button type="submit" (click)="suppressionCommentaire(selectedCommentaire)">Supprimer</button>
     </div>
 </div>

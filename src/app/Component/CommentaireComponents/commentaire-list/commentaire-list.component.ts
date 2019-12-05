@@ -18,6 +18,7 @@ export class CommentaireListComponent implements OnInit {
   constructor(private commentaireService: CommentaireService) { }
 
   ngOnInit() {
+    this.box = new Box();
   }
 
   selectCommentaire(commentaire: Commentaire) {

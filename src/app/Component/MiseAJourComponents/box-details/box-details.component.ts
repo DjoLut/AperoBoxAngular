@@ -15,6 +15,7 @@ export class BoxDetailsComponent implements OnInit {
   constructor(private boxService: BoxService) { }
 
   ngOnInit() {
+    this.box = new Box();
   }
 
   suppressionBox(box: Box) {
