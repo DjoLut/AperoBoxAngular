@@ -11,6 +11,10 @@ export class AdresseService {
 
   constructor(private http: HttpClient) { }
 
+  getAllAdresses(): Observable<Adresse[]> {
+    return this.http.get<Adresse[]>(`${Constantes.URL_API}Adresse`);
+  }
+
   getAdresseById(id: number): Observable<Adresse>{
     return this.http.get<Adresse>(`${Constantes.URL_API}Adresse/${id}`);
   }

@@ -2,31 +2,31 @@
 <form [formGroup]="editUtilisateur">
     <div class="ligneForm">
         <label>Nom : </label>
-        <input type="text" formControlName="nom" placeholder="Nom" required value="{{utilisateur.nom}}">
+        <input type="text" formControlName="nom" placeholder="Nom" required>
     </div>
     <div class="ligneForm">
         <label for="prenom">Prénom : </label>
-        <input type="text" formControlName="prenom" placeholder="Prénom" required value="{{utilisateur.prenom}}">
+        <input type="text" formControlName="prenom" placeholder="Prénom" required >
     </div>
     <div class="ligneForm">
         <label for="dateNaissance">Age : </label>
-        <input type="date" formControlName="dateNaissance" required value="{{utilisateur.dateNaissance | date: 'yyyy-MM-dd'}}">
+        <input type="date" formControlName="dateNaissance" required>
     </div>
     <div class="ligneForm">
         <label for="mail">Email : </label>
-        <input type="email" formControlName="mail" required placeholder="example@hotmail.com" value="{{utilisateur.mail}}">
+        <input type="email" formControlName="mail" required placeholder="example@hotmail.com">
     </div>
     <div class="ligneForm">
         <label for="telephone">Téléphone : </label>
-        <input type="tel" formControlName="telephone" placeholder="062 35 64 87" value="{{utilisateur.telephone || 0}}">
+        <input type="tel" formControlName="telephone" placeholder="062 35 64 87">
     </div>
     <div class="ligneForm">
         <label for="gsm">Gsm : </label>
-        <input type="tel" formControlName="gsm" required placeholder="0473 58 48 96" value="{{utilisateur.gsm || 0}}">
+        <input type="tel" formControlName="gsm" required placeholder="0473 58 48 96">
     </div>
     <div class="ligneForm">
         <label for="username">Username : </label>
-        <input type="text" formControlName="username" required placeholder="Username" value="{{utilisateur.username}}">
+        <input type="text" formControlName="username" required placeholder="Username">
     </div>
     <div class="ligneForm">
         <label>Droits : </label>
@@ -37,27 +37,29 @@
         <h3>Adresse</h3>
         <div class="ligneForm">
             <label for="rue">Rue : </label>
-            <input type="text" formControlName="rue" placeholder="Rue" value="{{adresse.rue}}">
+            <input type="text" formControlName="rue" placeholder="Rue" required>
         </div>
         <div class="ligneForm">
             <label for="numero">Numéro : </label>
-            <input type="number" formControlName="numero" placeholder="Numéro" value="{{adresse.numero}}">
+            <input type="number" formControlName="numero" placeholder="Numéro" required>
         </div>
         <div class="ligneForm">
             <label for="localite">Localité : </label>
-            <input type="text" formControlName="localite" placeholder="Localité" value="{{adresse.localite}}">
+            <input type="text" formControlName="localite" placeholder="Localité" required>
         </div>
         <div class="ligneForm">
             <label for="codePostal">Code Postal : </label>
-            <input type="number" formControlName="codePostal" placeholder="Code Postal" value="{{adresse.codePostal}}">
+            <input type="number" formControlName="codePostal" placeholder="Code Postal" required>
         </div>
         <div class="ligneForm">
             <label for="pays">Pays : </label>
-            <input type="text" formControlName="pays" placeholder="Pays" value="{{adresse.pays}}">
+            <input type="text" formControlName="pays" placeholder="Pays" required>
         </div>
     </form>
     <div class="button">
-        <button type="submit" (click)="modifierUtilisateur()">Modifier</button>
-        <button type="submit" (click)="suppressionUtilisateur(utilisateur)">Supprimer</button>
+        <button type="submit" (click)="remplirUtilisateurForm()">Modifier</button>
     </div>
 </form>
+<div class="button">
+    <button type="submit" (click)="suppressionUtilisateur(utilisateur)">Supprimer</button>
+</div>
