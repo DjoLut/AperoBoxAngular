@@ -5,7 +5,7 @@ import { LigneProduit } from './LigneProduit';
 export class Box {
     id: number;
     nom: string;
-    prixUnitaireHTVA: number;
+    prixUnitaireHtva: number;
     tva: number;
     promotion: number;
     description: string;

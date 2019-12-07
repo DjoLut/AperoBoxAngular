@@ -1,10 +1,13 @@
 <div class="containerlisteproduit">
     <h3>Listes des produits de la box : </h3>
-    <ul class="listeProduit" *ngIf="listeProduitQuantite">
-        <div class="box">
-        <li class="produit" *ngFor="let prod of listeProduitQuantite">{{prod.produit.nom}} : 
-            <input type="number" value="{{prod.quantite}}">
-        </li>
-    </div>
+    <ul [formGroup]="editProduit" class="listeProduit" *ngIf="listeProduitQuantite">
+        <div formArrayName="listeProduit" class="box" *ngFor="let item of listeProduit.controls; let i = index">
+            <div class="produit" [formGroupName]="i">
+                <div class="nomProduit" formGroupName="produit">
+                    <input type="text" formControlName="nom" required>
+                </div>
+                <input type="number" formControlName="quantite" required>
+            </div>
+        </div>
     </ul>
 </div>

@@ -3,7 +3,7 @@ import { LigneProduit } from './LigneProduit';
 
 export class Produit {
     id: number;
-    prixUnitaireHTVA: number;
+    prixUnitaireHtva: number;
     tva: number;
     nom: string;
     datePeremption: Date;

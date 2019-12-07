@@ -1,32 +1,41 @@
 <div id="boxForm">
     <h3>Box : </h3>
-    <form>
+    <form [formGroup]="editBox">
         <div>
-            <label for="nomBox">Nom : </label>
-            <input type="text" id="nomBox" placeholder="Nom de la box" value="{{box.nom}}">
+            <label for="nom">Nom : </label>
+            <input type="text" formControlName="nom" placeholder="Nom de la box" required>
         </div>
         <div>
-            <label for="prix">Prix : </label>
-            <input type="number" id="prix" step="any" min="0" max="1000" placeholder="12.21" value="{{box.prixUnitaireHtva || 0}}">
+            <label for="prixUnitaireHtva">Prix : </label>
+            <input type="number" formControlName="prixUnitaireHtva" placeholder="12.21" required>
         </div>
         <div>
             <label for="tva">Tva : </label>
-            <input type="number" id="tva" placeholder="21" value="{{box.tva || 0}}">
+            <input type="number" formControlName="tva" placeholder="21" required>
         </div>
         <div>
-            <label for="promo">Promotion : </label>
-            <input type="number" id="promo" placeholder="10" value="{{box.promotion || 0}}">
+            <label for="promotion">Promotion : </label>
+            <input type="number" formControlName="promotion" placeholder="10">
         </div>
         <div>
             <label for="description">Description : </label>
-            <input type="text" id="description" placeholder="Description de la box" value="{{box.description}}">
+            <input type="text" formControlName="description" placeholder="Description de la box" required>
         </div>
         <div>
             <label for="photo">Photo : </label>
-            <input type="text" id="photo" placeholder="Lien de la photo" value="{{box.photo}}">
+            <input type="text" formControlName="photo" placeholder="Lien de la photo" required>
+        </div>
+        <div>
+            <label>Visibilité : </label>
+            <input type="checkbox">
+            <label htmlFor="affichable" for="affichable">Affichable</label>
+        </div>
+        <div>
+            <label for="dateCreation">Date : </label>
+            <input type="date" formControlName="dateCreation" required>
         </div>
         <div class="button">
-            <button type="submit" [disabled]="box.id == null">Ajouter/Modifer</button>
+            <button type="submit" (click)="remplirBoxForm()" [disabled]="box.id == null">Ajouter/Modifer</button>
             <button type="submit" (click)="suppressionBox(box)" [disabled]="box.id == null">Supprimer</button>
         </div>
     </form>

@@ -3,6 +3,7 @@ import { Produit } from 'src/app/Model/Produit';
 import { ProduitService } from 'src/app/Service/produit.service';
 import { Box } from 'src/app/Model/Box';
 import { Observable } from 'rxjs';
+import { FormGroup, FormArray, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-produit-list',
@@ -12,6 +13,7 @@ import { Observable } from 'rxjs';
 export class ProduitListComponent implements OnInit {
 
   @Input() box: Box;
+  @Input() editProduit: FormGroup;
   produits: Produit[];
   
   listeProduitQuantite: Array<{produit:Produit, quantite:number}>;
@@ -25,6 +27,10 @@ export class ProduitListComponent implements OnInit {
     });
 
     this.listeProduitQuantite = this.produitService.listeProduitQuantite;
-  } 
+  }
+
+  get listeProduit() {
+    return this.editProduit.get("listeProduit") as FormArray;
+  }
 
 }

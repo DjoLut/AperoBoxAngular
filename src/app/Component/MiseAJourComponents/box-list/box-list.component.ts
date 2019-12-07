@@ -7,6 +7,7 @@ import { LigneProduit } from 'src/app/Model/LigneProduit';
 import { ProduitService } from 'src/app/Service/produit.service';
 import { Adresse } from 'src/app/Model/Adresse';
 import { AdresseService } from 'src/app/Service/adresse.service';
+import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-box-list',
@@ -20,11 +21,29 @@ export class BoxListComponent implements OnInit {
   produits: Produit[];
   selectedIndex: number = null;
 
+  editBox = new FormGroup({
+    nom: new FormControl('', [Validators.required, Validators.minLength(2)]),
+    prixUnitaireHtva: new FormControl('', [Validators.required, Validators.min(0)]),
+    tva: new FormControl('yyyy-MM-dd', [Validators.required, Validators.min(0)]),
+    promotion: new FormControl(''),
+    description: new FormControl('', Validators.required),
+    photo: new FormControl('', Validators.required),
+    //affichable: new FormControl(),
+    dateCreation: new FormControl('yyyy-MM-dd', Validators.required)
+  });
+
+  editProduit: FormGroup;
+
   constructor(
     private boxService: BoxService,
     private produitService: ProduitService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private fb: FormBuilder) 
+  { 
+    this.editProduit = this.fb.group({
+      listeProduit: this.fb.array([])
+    })
+  }
 
   ngOnInit() {
     this.boxes = new Array();
@@ -50,9 +69,46 @@ export class BoxListComponent implements OnInit {
     this.selectedBox = box;
     this.produitService.completeListeProduitQuantite(this.produits, box);
     this.selectedIndex = index;
+
+    this.remplirFormulaire(box);
   }
 
-  ajouterBox() {
+  remplirFormulaire(box?: Box) {
+    let date: Date;
+    if(box.dateCreation != null)
+      date = new Date(box.dateCreation);
+    else
+      date = new Date();
+    this.editBox.patchValue({
+      nom: box.nom,
+      prixUnitaireHtva: box.prixUnitaireHtva,
+      tva: box.tva,
+      promotion: box.promotion,
+      description: box.description,
+      photo: box.photo,
+      //affichable: box.affichable,
+      dateCreation: date.toISOString().substring(0,10)
+    })
+
+    this.listeProduit.clear();
+    for(let i = 0; i < this.produitService.listeProduitQuantite.length; i++) {
+      this.listeProduit.push(
+        this.fb.group({
+          produit: new FormGroup({
+            id: new FormControl(this.produitService.listeProduitQuantite[i].produit.id),
+            prixUnitaireHtva: new FormControl(this.produitService.listeProduitQuantite[i].produit.prixUnitaireHtva),
+            tva: new FormControl(this.produitService.listeProduitQuantite[i].produit.tva),
+            nom: new FormControl({value: this.produitService.listeProduitQuantite[i].produit.nom, disabled: true}),
+            datePremption: new FormControl(this.produitService.listeProduitQuantite[i].produit.datePeremption),
+            alcool: new FormControl(this.produitService.listeProduitQuantite[i].produit.alcool)
+          }),
+          quantite: new FormControl(this.produitService.listeProduitQuantite[i].quantite, [Validators.required, Validators.min(0)])
+        }));
+    }
+  }
+
+  get listeProduit() {
+    return this.editProduit.get("listeProduit") as FormArray;
   }
 
 }
