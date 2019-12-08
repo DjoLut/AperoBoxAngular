@@ -1,9 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Box } from 'src/app/Model/Box';
-import { Observable } from 'rxjs';
 import { Commentaire } from 'src/app/Model/Commentaire';
 import { CommentaireService } from 'src/app/Service/commentaire.service';
-import { utils } from 'protractor';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-commentaire-list',
@@ -16,7 +15,10 @@ export class CommentaireListComponent implements OnInit {
   selectedCommentaire: Commentaire;
   selectedIndex: number = null;
 
-  constructor(private commentaireService: CommentaireService) { }
+  constructor(
+    private commentaireService: CommentaireService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.box = new Box();
@@ -30,9 +32,15 @@ export class CommentaireListComponent implements OnInit {
   suppressionCommentaire(commentaire: Commentaire) {
     if(confirm("Voulez-vous supprimer ce commentaire ? ")) {
       this.commentaireService.supprimerCommentaire(commentaire).subscribe(elem => {
-        window.location.reload();
+        this.reloadPage();
       }); //ERROR ETC ..... à faire plus tard
     }
+  }
+
+  reloadPage() {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/commentaire']);
+    });
   }
 
 }

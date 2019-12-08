@@ -4,7 +4,6 @@ import { Utilisateur } from 'src/app/Model/Utilisateur';
 import { Adresse } from 'src/app/Model/Adresse';
 import { AdresseService } from 'src/app/Service/adresse.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-utilisateurs-list',

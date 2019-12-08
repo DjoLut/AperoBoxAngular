@@ -23,5 +23,6 @@ button {
   
 button:hover {
     opacity: 0.8;
-    background-color: rgb(145, 181, 248);;
+    background-color: rgb(145, 181, 248);
+    cursor: pointer;
 }

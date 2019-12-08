@@ -2,8 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Produit } from 'src/app/Model/Produit';
 import { ProduitService } from 'src/app/Service/produit.service';
 import { Box } from 'src/app/Model/Box';
-import { Observable } from 'rxjs';
-import { FormGroup, FormArray, FormControl } from '@angular/forms';
+import { FormGroup, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-produit-list',

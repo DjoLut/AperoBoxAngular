@@ -3,10 +3,7 @@ import { BoxService } from 'src/app/Service/box.service';
 import { Box } from 'src/app/Model/Box';
 import { Router } from '@angular/router';
 import { Produit } from 'src/app/Model/Produit';
-import { LigneProduit } from 'src/app/Model/LigneProduit';
 import { ProduitService } from 'src/app/Service/produit.service';
-import { Adresse } from 'src/app/Model/Adresse';
-import { AdresseService } from 'src/app/Service/adresse.service';
 import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@angular/forms';
 
 @Component({
@@ -20,6 +17,8 @@ export class BoxListComponent implements OnInit {
   selectedBox: Box;
   produits: Produit[];
   selectedIndex: number = null;
+
+  nouvelleBox: Box;
 
   editBox = new FormGroup({
     id: new FormControl(),
@@ -110,6 +109,24 @@ export class BoxListComponent implements OnInit {
 
   get listeProduit() {
     return this.editProduit.get("listeProduit") as FormArray;
+  }
+
+  ajoutBox() {
+    if(confirm("Voulez-vous ajouter une nouvelle box ? Vous pourrez modifier celle-ci après la création")) {
+      this.nouvelleBox = new Box();
+      this.nouvelleBox.nom = "Nouvelle Box";
+      this.nouvelleBox.prixUnitaireHtva = 0;
+      this.nouvelleBox.tva = 0;
+      this.nouvelleBox.promotion = null;
+      this.nouvelleBox.description = "Description Nouvelle Box";
+      this.nouvelleBox.photo = "img.jpeg";
+      this.nouvelleBox.dateCreation = new Date();
+      this.boxService.ajouterBox(this.nouvelleBox).subscribe(elem => {
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+          this.router.navigate(['/update']);
+        });
+      });
+    }
   }
 
 }

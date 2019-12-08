@@ -18,8 +18,16 @@ button {
 button:hover {
     opacity: 0.8;
     background-color: rgb(145, 181, 248);
+    cursor: pointer;
 }
 
 .active {
     background-color:  rgb(145, 181, 248);
+}
+
+ul {
+    list-style: none;
+}
+ul li a {
+    cursor: pointer;
 }

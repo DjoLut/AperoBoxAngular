@@ -1,11 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Utilisateur } from 'src/app/Model/Utilisateur';
 import { UtilisateurService } from 'src/app/Service/utilisateur.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 import { Adresse } from 'src/app/Model/Adresse';
 import { AdresseService } from 'src/app/Service/adresse.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-utilisateurs-details',
@@ -27,7 +26,8 @@ export class UtilisateursDetailsComponent implements OnInit {
 
   constructor(
     private utilisateurService: UtilisateurService,
-    private adresseService: AdresseService
+    private adresseService: AdresseService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -115,7 +115,7 @@ export class UtilisateursDetailsComponent implements OnInit {
 
   modifierUtilisateur() {
     this.utilisateurService.modifierUtilisateur(this.utilisateurForm).subscribe(elem => {
-      window.location.reload();
+      this.reloadPage();
     }); //ERROR ETC ....
   }
 
@@ -129,9 +129,15 @@ export class UtilisateursDetailsComponent implements OnInit {
   suppressionUtilisateur(utilisateur: Utilisateur) {
     if(confirm("Voulez-vous supprimer cet utilisateur ? " + utilisateur.nom + " " + utilisateur.prenom)) {
       this.utilisateurService.supprimerUtilisateur(utilisateur).subscribe(elem => {
-        window.location.reload();
+        this.reloadPage();
       }); //ERROR ETC ..... à faire plus tard
     }
+  }
+
+  reloadPage() {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/utilisateur']);
+    });
   }
 
 }

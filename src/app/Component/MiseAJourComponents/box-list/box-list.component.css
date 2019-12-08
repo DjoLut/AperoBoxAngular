@@ -50,3 +50,11 @@
 .active {
     background-color:  rgb(145, 181, 248);
 }
+
+ul {
+    list-style: none;
+}
+
+ul li a {
+    cursor: pointer;
+}

@@ -3,10 +3,10 @@
         <h3>Listes des boxes : </h3>
         <ul *ngIf="boxes">
             <li *ngIf="isUpdateRoute()">
-                <a (click)="selectBox('')">Créer une nouvelle box</a>
+                <a (click)="ajoutBox()">&lt;&lt; Créer une nouvelle box &gt;&gt;</a>
             </li>
             <li *ngFor="let box of boxes; let i = index">
-                <a [class.active]="selectedIndex == i" (click)="selectBox(box, i)">{{box.nom}}</a>
+                <a [class.active]="selectedIndex == i" (click)="selectBox(box, i)">{{i+1}}) {{box.nom}}</a>
             </li>
         </ul>
     </div>

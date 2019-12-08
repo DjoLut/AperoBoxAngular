@@ -72,8 +72,6 @@
     </form>
     <div class="button">
         <button type="submit" (click)="remplirUtilisateurForm()" [disabled]="!editUtilisateur.valid">Modifier</button>
+        <button type="submit" (click)="suppressionUtilisateur(utilisateur)" [disabled]="utilisateur.id == null">Supprimer</button>
     </div>
 </form>
-<div class="button">
-    <button type="submit" (click)="suppressionUtilisateur(utilisateur)" [disabled]="utilisateur.id == null">Supprimer</button>
-</div>

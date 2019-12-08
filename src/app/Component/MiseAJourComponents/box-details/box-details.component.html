@@ -43,7 +43,7 @@
             <p *ngIf="box.id != null && editBox.get('dateCreation').invalid && editBox.get('dateCreation').errors.required">La date de création est obligatoire !</p>
         </div>
         <div class="button">
-            <button type="submit" (click)="remplirBoxForm()" [disabled]="!editBox.valid || !editProduit.valid">Ajouter/Modifer</button>
+            <button type="submit" (click)="remplirBoxForm()" [disabled]="!editBox.valid || !editProduit.valid">Modifer</button>
             <button type="submit" (click)="suppressionBox(box)" [disabled]="box.id == null">Supprimer</button>
         </div>
     </form>

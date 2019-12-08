@@ -8,6 +8,6 @@
         </li>
     </ul>
     <div *ngIf="box.id != null && box.commentaire.length" class="button">
-        <button type="submit" (click)="suppressionCommentaire(selectedCommentaire)" [disabled]="selectedCommentaire == null">Supprimer</button>
+        <button type="submit" (click)="suppressionCommentaire(selectedCommentaire)" [disabled]="selectedCommentaire == null || selectedCommentaire.box != box.id">Supprimer</button>
     </div>
 </div>

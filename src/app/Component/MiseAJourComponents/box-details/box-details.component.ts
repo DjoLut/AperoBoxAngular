@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Box } from 'src/app/Model/Box';
 import { BoxService } from 'src/app/Service/box.service';
 import { FormGroup, FormArray } from '@angular/forms';
@@ -33,6 +32,7 @@ export class BoxDetailsComponent implements OnInit {
 
   remplirBoxForm() {
     this.boxForm = new Box();
+    this.boxForm.id = this.box.id;
     this.boxForm.nom = this.editBox.get('nom').value;
     this.boxForm.prixUnitaireHtva = this.editBox.get('prixUnitaireHtva').value;
     this.boxForm.tva = this.editBox.get('tva').value;
@@ -42,22 +42,12 @@ export class BoxDetailsComponent implements OnInit {
     //this.boxForm.affichable = this.editBox.get('affichable').value;
     this.boxForm.dateCreation = this.editBox.get('dateCreation').value;
 
-    //Si Update Else Add
-    if(this.box.id != null)
-    {
-      this.boxForm.id = this.box.id;
+    for(let i = 0; i < this.box.ligneProduit.length; i++)
+      this.suppressionLigneProduit(this.box.ligneProduit[i]);
 
-      for(let i = 0; i < this.box.ligneProduit.length; i++)
-        this.suppressionLigneProduit(this.box.ligneProduit[i]);
+    this.remplirLigneProduitForm();
 
-      this.remplirLigneProduitForm(); //IDEE : FAIRE UN CLIC SUR NEW BOX ET AJOUTE UNE BOX PUIS FAIRE MISE A JOUR COMME CA ON A DEJA L ID DE LA BOX PLUS SIMPLE ET PLUS PROPRE...
-
-      this.modifBox();
-    }
-    else
-    {
-      this.ajoutBox(); 
-    }
+    this.modifBox();
   }
 
   remplirLigneProduitForm() {
@@ -80,17 +70,9 @@ export class BoxDetailsComponent implements OnInit {
     return this.editProduit.get("listeProduit") as FormArray;
   }
 
-  ajoutBox() {
-    this.boxService.ajouterBox(this.boxForm).subscribe(elem => {
-      this.boxForm.id = elem.id;
-      this.remplirLigneProduitForm();
-      this.reloadPage();
-    });
-  }
-
   ajoutLigneProduit(ligneProduit: LigneProduit) {
     this.ligneProduitService.ajouterLigneProduit(ligneProduit).subscribe(elem => {
-      this.reloadPage();
+      ;
     });
   }
 
