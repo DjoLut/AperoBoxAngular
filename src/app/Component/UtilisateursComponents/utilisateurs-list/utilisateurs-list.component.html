@@ -1,6 +1,7 @@
 <p></p>
 <div id="utilisateur-list">
     <h3>Liste des utilisateurs</h3>
+    <p *ngIf="!utilisateurs.length">Aucun utilisateur !</p>
     <ul *ngIf="utilisateurs">
         <li *ngFor="let util of utilisateurs; let i = index">
             <a [class.active]="selectedIndex == i" (click)="selectUtilisateur(util, i)">{{i+1}}) {{util.nom}} {{util.prenom}}</a>

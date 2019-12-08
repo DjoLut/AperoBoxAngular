@@ -1,6 +1,7 @@
 <div class="containerlistebox">
     <div id="box-list">
         <h3>Listes des boxes : </h3>
+        <p *ngIf="!boxes.length">Aucune box !</p>
         <ul *ngIf="boxes">
             <li *ngIf="isUpdateRoute()">
                 <a (click)="ajoutBox()">&lt;&lt; Créer une nouvelle box &gt;&gt;</a>
