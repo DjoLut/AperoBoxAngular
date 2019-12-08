@@ -28,7 +28,7 @@ export class BoxListComponent implements OnInit {
     promotion: new FormControl('', [Validators.max(1), Validators.min(0)]),
     description: new FormControl('', [Validators.required, Validators.minLength(2)]),
     photo: new FormControl('', Validators.required),
-    //affichable: new FormControl(),
+    affichable: new FormControl(),
     dateCreation: new FormControl('yyyy-MM-dd', Validators.required)
   });
 
@@ -65,15 +65,18 @@ export class BoxListComponent implements OnInit {
     return this.router.url === '/commentaire';
   }
 
-  selectBox(box?: Box, index?: number) {
+  selectBox(box: Box, index: number) {
     this.selectedBox = box;
-    this.produitService.completeListeProduitQuantite(this.produits, box);
     this.selectedIndex = index;
 
-    this.remplirFormulaire(box);
+    if(this.isUpdateRoute())
+    {
+      this.produitService.completeListeProduitQuantite(this.produits, box);
+      this.remplirFormulaire(box);
+    }
   }
 
-  remplirFormulaire(box?: Box) {
+  remplirFormulaire(box: Box) {
     let date: Date;
     if(box.dateCreation != null)
       date = new Date(box.dateCreation);
@@ -86,7 +89,7 @@ export class BoxListComponent implements OnInit {
       promotion: box.promotion,
       description: box.description,
       photo: box.photo,
-      //affichable: box.affichable,
+      affichable: box.affichable,
       dateCreation: date.toISOString().substring(0,10)
     })
 
@@ -120,6 +123,7 @@ export class BoxListComponent implements OnInit {
       this.nouvelleBox.promotion = null;
       this.nouvelleBox.description = "Description Nouvelle Box";
       this.nouvelleBox.photo = "img.jpeg";
+      this.nouvelleBox.affichable = 0;
       this.nouvelleBox.dateCreation = new Date();
       this.boxService.ajouterBox(this.nouvelleBox).subscribe(elem => {
         this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {

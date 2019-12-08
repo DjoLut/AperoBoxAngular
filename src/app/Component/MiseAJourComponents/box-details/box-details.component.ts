@@ -39,7 +39,10 @@ export class BoxDetailsComponent implements OnInit {
     this.boxForm.promotion = this.editBox.get('promotion').value;
     this.boxForm.description = this.editBox.get('description').value;
     this.boxForm.photo = this.editBox.get('photo').value;
-    //this.boxForm.affichable = this.editBox.get('affichable').value;
+    if(this.editBox.get('affichable').value)
+      this.boxForm.affichable = 1;
+    else
+      this.boxForm.affichable = 0;
     this.boxForm.dateCreation = this.editBox.get('dateCreation').value;
 
     for(let i = 0; i < this.box.ligneProduit.length; i++)

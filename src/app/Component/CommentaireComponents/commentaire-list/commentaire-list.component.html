@@ -4,7 +4,7 @@
     <p *ngIf="box.id != null && !box.commentaire.length">Aucun commentaire pour cette box</p>
     <ul *ngIf="box.commentaire">
         <li *ngFor="let com of box.commentaire; let i = index">
-            <a [class.active]="selectedIndex == i" (click)="selectCommentaire(com, i)">{{com.id}} : {{com.texte}}</a>
+            <a [class.active]="selectedIndex == i && selectedCommentaire.box == box.id" (click)="selectCommentaire(com, i)">{{com.id}} : {{com.texte}}</a>
         </li>
     </ul>
     <div *ngIf="box.id != null && box.commentaire.length" class="button">

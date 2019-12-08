@@ -12,8 +12,8 @@ import { Router } from '@angular/router';
 export class CommentaireListComponent implements OnInit {
 
   @Input() box: Box;
-  selectedCommentaire: Commentaire;
   selectedIndex: number = null;
+  selectedCommentaire: Commentaire;
 
   constructor(
     private commentaireService: CommentaireService,

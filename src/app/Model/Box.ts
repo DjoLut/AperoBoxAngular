@@ -10,7 +10,7 @@ export class Box {
     promotion: number;
     description: string;
     photo: string;
-    affichable: boolean;
+    affichable: number;
     dateCreation: Date;
     commentaire: Commentaire[];
     ligneCommande: LigneCommande[];
