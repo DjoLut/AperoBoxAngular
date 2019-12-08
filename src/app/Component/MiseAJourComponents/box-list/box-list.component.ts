@@ -22,11 +22,12 @@ export class BoxListComponent implements OnInit {
   selectedIndex: number = null;
 
   editBox = new FormGroup({
+    id: new FormControl(),
     nom: new FormControl('', [Validators.required, Validators.minLength(2)]),
     prixUnitaireHtva: new FormControl('', [Validators.required, Validators.min(0)]),
-    tva: new FormControl('yyyy-MM-dd', [Validators.required, Validators.min(0)]),
-    promotion: new FormControl(''),
-    description: new FormControl('', Validators.required),
+    tva: new FormControl('yyyy-MM-dd', [Validators.required, Validators.max(1), Validators.min(0)]),
+    promotion: new FormControl('', [Validators.max(1), Validators.min(0)]),
+    description: new FormControl('', [Validators.required, Validators.minLength(2)]),
     photo: new FormControl('', Validators.required),
     //affichable: new FormControl(),
     dateCreation: new FormControl('yyyy-MM-dd', Validators.required)

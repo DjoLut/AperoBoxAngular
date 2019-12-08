@@ -19,6 +19,10 @@ export class BoxService {
     return this.http.get<Box>(`${Constantes.URL_API}Box/${id}`);
   }
 
+  ajouterBox(box: Box): Observable<Box> {
+    return this.http.post<Box>(`${Constantes.URL_API}Box`, box);
+  }
+
   modifierBox(box: Box): Observable<Box> {
     return this.http.put<Box>(`${Constantes.URL_API}Box`, box);
   }

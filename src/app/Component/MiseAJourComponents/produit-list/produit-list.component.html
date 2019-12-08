@@ -7,6 +7,7 @@
                     <input type="text" formControlName="nom" required>
                 </div>
                 <input type="number" formControlName="quantite" required>
+                <p *ngIf="listeProduit.at(i).get('quantite').invalid">La quantité est obligatoire et doit-être positif !</p>
             </div>
         </div>
     </ul>

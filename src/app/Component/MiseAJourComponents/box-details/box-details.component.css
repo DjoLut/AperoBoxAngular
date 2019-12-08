@@ -40,3 +40,7 @@ button:hover {
     opacity: 0.8;
     background-color: rgb(145, 181, 248);;
 }
+
+p {
+    color: red;
+}

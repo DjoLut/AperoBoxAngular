@@ -4,26 +4,33 @@
         <div>
             <label for="nom">Nom : </label>
             <input type="text" formControlName="nom" placeholder="Nom de la box" required>
+            <p *ngIf="box.id != null && editBox.get('nom').invalid">Le nom de la box est obligatoire avec minimum 2 caractères !</p>
         </div>
         <div>
             <label for="prixUnitaireHtva">Prix : </label>
             <input type="number" formControlName="prixUnitaireHtva" placeholder="12.21" required>
+            <p *ngIf="box.id != null && editBox.get('prixUnitaireHtva').invalid && !editBox.get('prixUnitaireHtva').errors.required">Le prix de la box doit-être positif !</p>
+            <p *ngIf="box.id != null && editBox.get('prixUnitaireHtva').invalid && editBox.get('prixUnitaireHtva').errors.required">Le prix de la box est obligatoire !</p>
         </div>
         <div>
             <label for="tva">Tva : </label>
-            <input type="number" formControlName="tva" placeholder="21" required>
+            <input type="number" formControlName="tva" placeholder="0.21" required>
+            <p *ngIf="box.id != null && editBox.get('tva').invalid">La tva de la box est obligatoire (entre 0 et 1) !</p>
         </div>
         <div>
             <label for="promotion">Promotion : </label>
-            <input type="number" formControlName="promotion" placeholder="10">
+            <input type="number" formControlName="promotion" placeholder="0.09">
+            <p *ngIf="box.id != null && editBox.get('promotion').invalid">La promotion doit-être comprise entre 0 et 1 !</p>
         </div>
         <div>
             <label for="description">Description : </label>
             <input type="text" formControlName="description" placeholder="Description de la box" required>
+            <p *ngIf="box.id != null && editBox.get('description').invalid">La description de la box est obligatoire avec minimum 2 caractères !</p>
         </div>
         <div>
             <label for="photo">Photo : </label>
             <input type="text" formControlName="photo" placeholder="Lien de la photo" required>
+            <p *ngIf="box.id != null && editBox.get('photo').invalid">Lien de la photo obligatoire !</p>
         </div>
         <div>
             <label>Visibilité : </label>
@@ -33,9 +40,10 @@
         <div>
             <label for="dateCreation">Date : </label>
             <input type="date" formControlName="dateCreation" required>
+            <p *ngIf="box.id != null && editBox.get('dateCreation').invalid && editBox.get('dateCreation').errors.required">La date de création est obligatoire !</p>
         </div>
         <div class="button">
-            <button type="submit" (click)="remplirBoxForm()" [disabled]="box.id == null">Ajouter/Modifer</button>
+            <button type="submit" (click)="remplirBoxForm()" [disabled]="!editBox.valid || !editProduit.valid">Ajouter/Modifer</button>
             <button type="submit" (click)="suppressionBox(box)" [disabled]="box.id == null">Supprimer</button>
         </div>
     </form>
