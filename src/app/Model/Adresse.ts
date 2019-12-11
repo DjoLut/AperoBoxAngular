@@ -8,6 +8,7 @@ export class Adresse {
     localite: string;
     codePostal: number;
     pays: string;
+    rowVersion: number;
     commande: Commande[];
     utilisateur: Utilisateur[];
 }

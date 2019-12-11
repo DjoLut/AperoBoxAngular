@@ -6,5 +6,6 @@ export class Commande {
     promotion: number;
     utilisateur: number;
     adresse: number;
+    rowVersion: number;
     ligneCommande: LigneCommande[];
 }

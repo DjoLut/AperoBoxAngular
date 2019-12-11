@@ -8,6 +8,7 @@ export class Produit {
     nom: string;
     datePeremption: Date;
     alcool: boolean;
+    rowVersion: number;
     ligneCommande: LigneCommande[];
     ligneProduit: LigneProduit[];
 }

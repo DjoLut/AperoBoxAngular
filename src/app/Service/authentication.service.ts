@@ -39,4 +39,8 @@ export class AuthenticationService {
     return this.http.post<JwtToken>(`${Constantes.URL_API}Jwt`, body, this.httpOptions);
   }
 
+  public logout() {
+    this.setToken(null);
+  }
+
 }

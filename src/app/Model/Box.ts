@@ -12,6 +12,7 @@ export class Box {
     photo: string;
     affichable: number;
     dateCreation: Date;
+    rowVersion: number;
     commentaire: Commentaire[];
     ligneCommande: LigneCommande[];
     ligneProduit: LigneProduit[];

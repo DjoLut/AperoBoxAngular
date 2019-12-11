@@ -26,3 +26,11 @@ button:hover {
     background-color: rgb(145, 181, 248);
     cursor: pointer;
 }
+
+p {
+    text-align: center;
+    width: 25%;
+    height: 100%;
+    padding: 20px;
+    margin: auto;
+}

@@ -5,4 +5,5 @@ export class LigneCommande {
     commande: number;
     box: number;
     produit: number;
+    rowVersion: number;
 }

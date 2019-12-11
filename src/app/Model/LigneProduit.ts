@@ -4,4 +4,5 @@ export class LigneProduit {
     quantite: number;
     box: number;
     produit: number;
+    rowVersion: number;
 }

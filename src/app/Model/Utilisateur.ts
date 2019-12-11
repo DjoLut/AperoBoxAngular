@@ -13,6 +13,18 @@ export class Utilisateur {
     authorities: string;
     motDePasse: string;
     adresse: number;
+    rowVersion: number;
     commande: Commande[];
     commentaire: Commentaire[];
+    utilisateurRole: UtilisateurRole[];
+}
+
+export class UtilisateurRole {
+    idRole: number;
+    idUtilisateur: number;
+    role: Role;
+}
+
+export class Role {
+    nom: string;
 }

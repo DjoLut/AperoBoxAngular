@@ -1,24 +1,37 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Produit } from '../Model/Produit';
 import { Constantes } from '../Constantes';
 import { Box } from '../Model/Box';
+import { AuthenticationService } from './authentication.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProduitService {
 
+  private httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type' : 'application/json'
+    })
+  };
+
   listeProduitQuantite: Array<{produit: Produit, quantite: number}>;
   estTrouve: boolean;
 
-  constructor(private http:HttpClient) { 
+  constructor(private http:HttpClient, private authenticationService: AuthenticationService) { 
     this.listeProduitQuantite = new Array();
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type' : 'application/json',
+        'Authorization' : 'Bearer ' + authenticationService.getToken().access_token
+      })
+    };
   }
 
   getAllProduit(): Observable<Produit[]> {
-    return this.http.get<Produit[]>(`${Constantes.URL_API}Produit`);
+    return this.http.get<Produit[]>(`${Constantes.URL_API}Produit`, this.httpOptions);
   }
 
   completeListeProduitQuantite(produits: Produit[], box?: Box) {

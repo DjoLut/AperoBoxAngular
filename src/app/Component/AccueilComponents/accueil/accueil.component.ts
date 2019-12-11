@@ -28,8 +28,16 @@ export class AccueilComponent implements OnInit {
     var password = this.loginForm.get('Password').value;
     this.authenticationService.login(username, password).subscribe(frm => {
       this.authenticationService.setToken(frm);
-      this.router.navigate(["/utilisateur"]);
+      this.router.navigate(["/accueil"]);
     });
+  }
+
+  estAuthentifier() {
+    return this.authenticationService.isAuthenticated();
+  }
+
+  logout() {
+    this.authenticationService.logout();
   }
 
 }

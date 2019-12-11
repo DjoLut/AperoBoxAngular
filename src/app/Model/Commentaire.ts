@@ -5,4 +5,5 @@ export class Commentaire {
     dateCreation: Date;
     utilisateur: number;
     box: number;
+    rowVersion: number;
 }
