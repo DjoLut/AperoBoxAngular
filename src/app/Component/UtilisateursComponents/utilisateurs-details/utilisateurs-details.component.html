@@ -37,11 +37,7 @@
         <input type="text" formControlName="username" placeholder="Username" required>
         <p *ngIf="utilisateur.id != null && editUtilisateur.get('username').invalid">Le nom d'utilisateur est obligatoire avec minimum 2 caractères !</p>
     </div>
-    <div class="ligneForm">
-        <label>Droits : </label>
-        <input type="checkbox" name="droit">
-        <label htmlFor="authorities" for="authorities">Admin</label>
-    </div>
+
     <form [formGroup]="editAdresse">
         <h3>Adresse</h3>
         <div class="ligneForm">
