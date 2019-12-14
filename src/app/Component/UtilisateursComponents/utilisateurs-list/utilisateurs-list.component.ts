@@ -24,7 +24,8 @@ export class UtilisateursListComponent implements OnInit {
     mail: new FormControl('', [Validators.required, Validators.email]),
     telephone: new FormControl('', [Validators.pattern('^[0-9]*$'), Validators.maxLength(9), Validators.minLength(9)]),
     gsm: new FormControl('', [Validators.pattern('^[0-9]*$'), Validators.maxLength(10), Validators.minLength(10), Validators.required]),
-    username: new FormControl('', [Validators.required, Validators.minLength(2)])
+    username: new FormControl('', [Validators.required, Validators.minLength(2)]),
+    rowversion: new FormControl('')
   });
 
   editAdresse = new FormGroup({
@@ -57,6 +58,7 @@ export class UtilisateursListComponent implements OnInit {
   }
 
   remplirFormulaire(utilisateur: Utilisateur) {
+    console.log(utilisateur.rowVersion);
     var telephone;
     if(utilisateur.telephone != null)
       telephone = "0" + utilisateur.telephone;
@@ -70,7 +72,8 @@ export class UtilisateursListComponent implements OnInit {
       mail: utilisateur.mail,
       telephone: telephone,
       gsm: "0" + utilisateur.gsm,
-      username: utilisateur.username
+      username: utilisateur.username,
+      rowversion: utilisateur.rowVersion
     })
 
     this.editAdresse.patchValue({

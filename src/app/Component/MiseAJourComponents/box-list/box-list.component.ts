@@ -29,7 +29,8 @@ export class BoxListComponent implements OnInit {
     description: new FormControl('', [Validators.required, Validators.minLength(2)]),
     photo: new FormControl('', Validators.required),
     affichable: new FormControl(),
-    dateCreation: new FormControl('yyyy-MM-dd', Validators.required)
+    dateCreation: new FormControl('yyyy-MM-dd', Validators.required),
+    rowversion: new FormControl('')
   });
 
   editProduit: FormGroup;
@@ -90,7 +91,8 @@ export class BoxListComponent implements OnInit {
       description: box.description,
       photo: box.photo,
       affichable: box.affichable,
-      dateCreation: date.toISOString().substring(0,10)
+      dateCreation: date.toISOString().substring(0,10),
+      rowversion: box.rowVersion
     })
 
     this.listeProduit.clear();

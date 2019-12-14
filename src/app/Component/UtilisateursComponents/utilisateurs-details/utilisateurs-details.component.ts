@@ -42,12 +42,13 @@ export class UtilisateursDetailsComponent implements OnInit {
     this.utilisateurForm.prenom = this.editUtilisateur.get("prenom").value;
     this.utilisateurForm.dateNaissance = this.editUtilisateur.get("dateNaissance").value;
     this.utilisateurForm.mail = this.editUtilisateur.get("mail").value;
-    if(this.editUtilisateur.get("telephone").value == 0 || this.editUtilisateur.get("telephone").value == '')
+    if(this.editUtilisateur.get("telephone").value == 0 || this.editUtilisateur.get("telephone").value == null)
       this.utilisateurForm.telephone = null;
     else
       this.utilisateurForm.telephone = +this.editUtilisateur.get("telephone").value;
     this.utilisateurForm.gsm = +this.editUtilisateur.get("gsm").value;
     this.utilisateurForm.username = this.editUtilisateur.get("username").value;
+    this.utilisateurForm.rowVersion = this.utilisateur.rowVersion;
 
     this.remplirAdresseForm();
   }

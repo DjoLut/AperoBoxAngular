@@ -44,6 +44,7 @@ export class BoxDetailsComponent implements OnInit {
     else
       this.boxForm.affichable = 0;
     this.boxForm.dateCreation = this.editBox.get('dateCreation').value;
+    this.boxForm.rowVersion = this.box.rowVersion;
 
     for(let i = 0; i < this.box.ligneProduit.length; i++)
       this.suppressionLigneProduit(this.box.ligneProduit[i]);
