@@ -3,6 +3,7 @@ import { Produit } from 'src/app/Model/Produit';
 import { ProduitService } from 'src/app/Service/produit.service';
 import { Box } from 'src/app/Model/Box';
 import { FormGroup, FormArray } from '@angular/forms';
+import { Erreurs } from 'src/app/Erreurs';
 
 @Component({
   selector: 'app-produit-list',
@@ -23,6 +24,9 @@ export class ProduitListComponent implements OnInit {
     this.produits = new Array();
     this.produitService.getAllProduit().subscribe((data) => {
       this.produits = data;
+    },
+    error => {
+      Erreurs.gestionErreur(error.status);
     });
 
     this.listeProduitQuantite = this.produitService.listeProduitQuantite;

@@ -11,6 +11,7 @@ import { Utilisateur } from '../Model/Utilisateur';
 export class AuthenticationService {
 
   private _accessToken: JwtToken;
+
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'

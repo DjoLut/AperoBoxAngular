@@ -3,6 +3,7 @@ import { Box } from 'src/app/Model/Box';
 import { Commentaire } from 'src/app/Model/Commentaire';
 import { CommentaireService } from 'src/app/Service/commentaire.service';
 import { Router } from '@angular/router';
+import { Erreurs } from 'src/app/Erreurs';
 
 @Component({
   selector: 'app-commentaire-list',
@@ -33,7 +34,10 @@ export class CommentaireListComponent implements OnInit {
     if(confirm("Voulez-vous supprimer ce commentaire ? ")) {
       this.commentaireService.supprimerCommentaire(commentaire).subscribe(elem => {
         this.reloadPage();
-      }); //ERROR ETC ..... à faire plus tard
+      },
+      error => {
+        Erreurs.gestionErreur(error.status);
+      });
     }
   }
 

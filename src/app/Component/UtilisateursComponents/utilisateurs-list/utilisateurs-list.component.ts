@@ -4,6 +4,7 @@ import { Utilisateur } from 'src/app/Model/Utilisateur';
 import { Adresse } from 'src/app/Model/Adresse';
 import { AdresseService } from 'src/app/Service/adresse.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Erreurs } from 'src/app/Erreurs';
 
 @Component({
   selector: 'app-utilisateurs-list',
@@ -45,6 +46,9 @@ export class UtilisateursListComponent implements OnInit {
     this.utilisateurs = new Array();
     this.utilisateurService.getAllUtilisateur().subscribe((data) => {
       this.utilisateurs = data;
+    },
+    error => {
+      Erreurs.gestionErreur(error.status);
     });
   }
 
@@ -53,12 +57,14 @@ export class UtilisateursListComponent implements OnInit {
     this.adresseService.getAdresseById(utilisateur.adresse).subscribe(data => {
         this.selectedAdresse = data;
         this.remplirFormulaire(utilisateur);
+    },
+    error => {
+      Erreurs.gestionErreur(error.status);
     });
     this.selectedIndex = index;
   }
 
   remplirFormulaire(utilisateur: Utilisateur) {
-    console.log(utilisateur.rowVersion);
     var telephone;
     if(utilisateur.telephone != null)
       telephone = "0" + utilisateur.telephone;

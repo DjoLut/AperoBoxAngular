@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Produit } from 'src/app/Model/Produit';
 import { ProduitService } from 'src/app/Service/produit.service';
 import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@angular/forms';
+import { Erreurs } from 'src/app/Erreurs';
 
 @Component({
   selector: 'app-box-list',
@@ -50,11 +51,17 @@ export class BoxListComponent implements OnInit {
     this.boxes = new Array();
     this.boxService.getAllBox().subscribe((data) => {
       this.boxes = data;
+    },
+    error => {
+      Erreurs.gestionErreur(error.status);
     });
 
     this.produits = new Array();
     this.produitService.getAllProduit().subscribe((data) => {
       this.produits = data;
+    },
+    error => {
+      Erreurs.gestionErreur(error.status);
     });
   }
 
@@ -131,6 +138,9 @@ export class BoxListComponent implements OnInit {
         this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
           this.router.navigate(['/update']);
         });
+      },
+      error => {
+        Erreurs.gestionErreur(error.status);
       });
     }
   }

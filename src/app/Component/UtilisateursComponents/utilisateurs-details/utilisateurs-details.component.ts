@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Adresse } from 'src/app/Model/Adresse';
 import { AdresseService } from 'src/app/Service/adresse.service';
 import { FormGroup } from '@angular/forms';
+import { Erreurs } from 'src/app/Erreurs';
 
 @Component({
   selector: 'app-utilisateurs-details',
@@ -111,27 +112,39 @@ export class UtilisateursDetailsComponent implements OnInit {
     this.adresseService.getAllAdresses().subscribe(data => {
       this.allAdresses = data;
       this.adresseExist();
+    },
+    error => {
+      Erreurs.gestionErreur(error.status);
     });
   }
 
   modifierUtilisateur() {
     this.utilisateurService.modifierUtilisateur(this.utilisateurForm).subscribe(elem => {
       this.reloadPage();
-    }); //ERROR ETC ....
+    },
+    error => {
+      Erreurs.gestionErreur(error.status);
+    });
   }
 
   ajouterAdresse() {
     this.adresseService.ajouterAdresse(this.adresseForm).subscribe(elem => {
       this.utilisateurForm.adresse = elem.id;
       this.modifierUtilisateur();
-    }); //ERROR ETC ....
+    },
+    error => {
+      Erreurs.gestionErreur(error.status);
+    });
   }
 
   suppressionUtilisateur(utilisateur: Utilisateur) {
     if(confirm("Voulez-vous supprimer cet utilisateur ? " + utilisateur.nom + " " + utilisateur.prenom)) {
       this.utilisateurService.supprimerUtilisateur(utilisateur).subscribe(elem => {
         this.reloadPage();
-      }); //ERROR ETC ..... à faire plus tard
+      },
+      error => {
+        Erreurs.gestionErreur(error.status);
+      });
     }
   }
 

@@ -5,6 +5,7 @@ import { FormGroup, FormArray } from '@angular/forms';
 import { LigneProduit } from 'src/app/Model/LigneProduit';
 import { LigneProduitService } from 'src/app/Service/ligne-produit.service';
 import { Router } from '@angular/router';
+import { Erreurs } from 'src/app/Erreurs';
 
 @Component({
   selector: 'app-box-details',
@@ -77,25 +78,39 @@ export class BoxDetailsComponent implements OnInit {
   ajoutLigneProduit(ligneProduit: LigneProduit) {
     this.ligneProduitService.ajouterLigneProduit(ligneProduit).subscribe(elem => {
       ;
+    },
+    error => {
+      Erreurs.gestionErreur(error.status);
     });
   }
 
   modifBox() {
     this.boxService.modifierBox(this.boxForm).subscribe(elem => {
       this.reloadPage();
-    }); //ERROR ETC ....
+    },
+    error => {
+      Erreurs.gestionErreur(error.status);
+    });
   }
 
   suppressionBox(box: Box) {
     if(confirm("Voulez-vous supprimer cette box ? " + box.nom)) {
       this.boxService.supprimerBox(box).subscribe(elem => {
         this.reloadPage();
-      }); //ERROR ETC ..... à faire plus tard
+      },
+      error => {
+        Erreurs.gestionErreur(error.status);
+      });
     }
   }
 
   suppressionLigneProduit(ligneProduit: LigneProduit) {
-    this.ligneProduitService.supprimerLigneProduit(ligneProduit).subscribe();
+    this.ligneProduitService.supprimerLigneProduit(ligneProduit).subscribe(elem => {
+      ;
+    },
+    error => {
+      Erreurs.gestionErreur(error.status);
+    });
   }
 
   reloadPage() {

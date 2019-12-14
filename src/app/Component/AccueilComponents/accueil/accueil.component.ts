@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/Service/authentication.service';
 import { Router } from '@angular/router';
+import { Erreurs } from 'src/app/Erreurs';
 
 @Component({
   selector: 'app-accueil',
@@ -29,6 +30,10 @@ export class AccueilComponent implements OnInit {
     this.authenticationService.login(username, password).subscribe(frm => {
       this.authenticationService.setToken(frm);
       this.router.navigate(["/accueil"]);
+      localStorage.setItem("access_token", frm.access_token);
+    },
+    error => {
+      this.gestionErreur(error.status);
     });
   }
 
@@ -38,6 +43,14 @@ export class AccueilComponent implements OnInit {
 
   logout() {
     this.authenticationService.logout();
+    localStorage.removeItem("access_token");
+  }
+
+  gestionErreur(error: number) {
+    if(error == 401)
+      alert("Nom d'utilisateur et/ou mot de passe incorrect(s) !");
+    else
+      Erreurs.gestionErreur(error);
   }
 
 }
