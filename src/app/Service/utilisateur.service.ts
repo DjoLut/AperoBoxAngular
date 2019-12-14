@@ -42,7 +42,7 @@ export class UtilisateurService {
   }
 
   modifierUtilisateur(utilisateur: Utilisateur): Observable<Utilisateur> {
-    return this.http.put<Utilisateur>(`${Constantes.URL_API}Utilisateur`, utilisateur, this.httpOptions);
+    return this.http.put<Utilisateur>(`${Constantes.URL_API}Utilisateur/${utilisateur.id}`, utilisateur, this.httpOptions);
   }
 
   supprimerUtilisateur(utilisateur: Utilisateur): Observable<Utilisateur> {

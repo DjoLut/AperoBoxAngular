@@ -45,8 +45,8 @@ export class UtilisateursDetailsComponent implements OnInit {
     if(this.editUtilisateur.get("telephone").value == 0 || this.editUtilisateur.get("telephone").value == '')
       this.utilisateurForm.telephone = null;
     else
-      this.utilisateurForm.telephone = this.editUtilisateur.get("telephone").value;
-    this.utilisateurForm.gsm = this.editUtilisateur.get("gsm").value;
+      this.utilisateurForm.telephone = +this.editUtilisateur.get("telephone").value;
+    this.utilisateurForm.gsm = +this.editUtilisateur.get("gsm").value;
     this.utilisateurForm.username = this.editUtilisateur.get("username").value;
 
     this.remplirAdresseForm();
