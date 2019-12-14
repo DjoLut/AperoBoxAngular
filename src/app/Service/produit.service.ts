@@ -11,28 +11,15 @@ import { AuthenticationService } from './authentication.service';
 })
 export class ProduitService {
 
-  private httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type' : 'application/json',
-      'Authorization': 'Bearer ' + localStorage.getItem("access_token")
-    })
-  };
-
   listeProduitQuantite: Array<{produit: Produit, quantite: number}>;
   estTrouve: boolean;
 
   constructor(private http:HttpClient, private authenticationService: AuthenticationService) { 
     this.listeProduitQuantite = new Array();
-    this.httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type' : 'application/json',
-        'Authorization' : 'Bearer ' + authenticationService.getToken().access_token
-      })
-    };
   }
 
   getAllProduit(): Observable<Produit[]> {
-    return this.http.get<Produit[]>(`${Constantes.URL_API}Produit`, this.httpOptions);
+    return this.http.get<Produit[]>(`${Constantes.URL_API}Produit`);
   }
 
   completeListeProduitQuantite(produits: Produit[], box?: Box) {

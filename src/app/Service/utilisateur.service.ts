@@ -10,44 +10,30 @@ import { AuthenticationService } from './authentication.service';
 })
 export class UtilisateurService {
 
-  private httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type' : 'application/json',
-      'Authorization': 'Bearer ' + localStorage.getItem("access_token")
-    })
-  };
-
-  constructor(private http:HttpClient, private authenticationService: AuthenticationService) { 
-    this.httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type' : 'application/json',
-        'Authorization' : 'Bearer ' + authenticationService.getToken().access_token
-      })
-    };
-  }
+  constructor(private http:HttpClient) { }
 
   getAllUtilisateur(): Observable<Utilisateur[]> {
-    return this.http.get<Utilisateur[]>(`${Constantes.URL_API}Utilisateur`, this.httpOptions);
+    return this.http.get<Utilisateur[]>(`${Constantes.URL_API}Utilisateur`);
   }
 
   getUtilisateurById(id: number): Observable<Utilisateur> {
-    return this.http.get<Utilisateur>(`${Constantes.URL_API}Utilisateur/${id}`, this.httpOptions);
+    return this.http.get<Utilisateur>(`${Constantes.URL_API}Utilisateur/${id}`);
   }
 
   getUtilisateurByUsername(username: string): Observable<Utilisateur> {
-    return this.http.get<Utilisateur>(`${Constantes.URL_API}Utilisateur/${username}`, this.httpOptions)
+    return this.http.get<Utilisateur>(`${Constantes.URL_API}Utilisateur/${username}`)
   }
 
   getUtilisateurByMail(mail: string): Observable<Utilisateur> {
-    return this.http.get<Utilisateur>(`${Constantes.URL_API}Utilisateur/${mail}`, this.httpOptions)
+    return this.http.get<Utilisateur>(`${Constantes.URL_API}Utilisateur/${mail}`)
   }
 
   modifierUtilisateur(utilisateur: Utilisateur): Observable<Utilisateur> {
-    return this.http.put<Utilisateur>(`${Constantes.URL_API}Utilisateur/${utilisateur.id}`, utilisateur, this.httpOptions);
+    return this.http.put<Utilisateur>(`${Constantes.URL_API}Utilisateur/${utilisateur.id}`, utilisateur);
   }
 
   supprimerUtilisateur(utilisateur: Utilisateur): Observable<Utilisateur> {
-    return this.http.delete<Utilisateur>(`${Constantes.URL_API}Utilisateur/${utilisateur.id}`, this.httpOptions);
+    return this.http.delete<Utilisateur>(`${Constantes.URL_API}Utilisateur/${utilisateur.id}`);
   }
 
 }

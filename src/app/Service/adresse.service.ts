@@ -10,35 +10,21 @@ import { AuthenticationService } from './authentication.service';
 })
 export class AdresseService {
 
-  private httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type' : 'application/json',
-      'Authorization': 'Bearer ' + localStorage.getItem("access_token")
-    })
-  };
-
   constructor(
     private http:HttpClient, 
     private authenticationService: AuthenticationService
-  ) { 
-    this.httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type' : 'application/json',
-        'Authorization' : 'Bearer ' + authenticationService.getToken().access_token
-      })
-    };
-  }
+  ) { }
 
   getAllAdresses(): Observable<Adresse[]> {
-    return this.http.get<Adresse[]>(`${Constantes.URL_API}Adresse`, this.httpOptions);
+    return this.http.get<Adresse[]>(`${Constantes.URL_API}Adresse`);
   }
 
   getAdresseById(id: number): Observable<Adresse>{
-    return this.http.get<Adresse>(`${Constantes.URL_API}Adresse/${id}`, this.httpOptions);
+    return this.http.get<Adresse>(`${Constantes.URL_API}Adresse/${id}`);
   }
 
   ajouterAdresse(adresse: Adresse): Observable<Adresse> {
-    return this.http.post<Adresse>(`${Constantes.URL_API}Adresse`, adresse, this.httpOptions);
+    return this.http.post<Adresse>(`${Constantes.URL_API}Adresse`, adresse);
   }
 
 }

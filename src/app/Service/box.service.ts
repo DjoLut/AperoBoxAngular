@@ -10,43 +10,29 @@ import { AuthenticationService } from './authentication.service';
 })
 export class BoxService {
 
-  private httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type' : 'application/json',
-      'Authorization': 'Bearer ' + localStorage.getItem("access_token")
-    })
-  };
-
   constructor(
     private http:HttpClient, 
     private authenticationService: AuthenticationService
-  ) { 
-    this.httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type' : 'application/json',
-        'Authorization' : 'Bearer ' + authenticationService.getToken().access_token
-      })
-    };
-  }
+  ) { }
 
   getAllBox(): Observable<Box[]> {
-    return this.http.get<Box[]>(`${Constantes.URL_API}Box`, this.httpOptions);
+    return this.http.get<Box[]>(`${Constantes.URL_API}Box`);
   }
 
   getBoxById(id: number): Observable<Box>{
-    return this.http.get<Box>(`${Constantes.URL_API}Box/${id}`, this.httpOptions);
+    return this.http.get<Box>(`${Constantes.URL_API}Box/${id}`);
   }
 
   ajouterBox(box: Box): Observable<Box> {
-    return this.http.post<Box>(`${Constantes.URL_API}Box`, box, this.httpOptions);
+    return this.http.post<Box>(`${Constantes.URL_API}Box`, box);
   }
 
   modifierBox(box: Box): Observable<Box> {
-    return this.http.put<Box>(`${Constantes.URL_API}Box`, box, this.httpOptions);
+    return this.http.put<Box>(`${Constantes.URL_API}Box`, box);
   }
 
   supprimerBox(box: Box): Observable<Box> {
-    return this.http.delete<Box>(`${Constantes.URL_API}Box/${box.id}`, this.httpOptions);
+    return this.http.delete<Box>(`${Constantes.URL_API}Box/${box.id}`);
   }
 
 }

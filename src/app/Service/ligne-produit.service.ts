@@ -10,35 +10,21 @@ import { AuthenticationService } from './authentication.service';
 })
 export class LigneProduitService {
 
-  private httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + localStorage.getItem("access_token")
-    })
-  }
-
   constructor(
     private http:HttpClient, 
     private authenticationService: AuthenticationService
-  ) { 
-    this.httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type' : 'application/json',
-        'Authorization' : 'Bearer ' + authenticationService.getToken().access_token
-      })
-    };
-  }
+  ) { }
 
   getAllLigneProduit(): Observable<LigneProduit[]> {
-    return this.http.get<LigneProduit[]>(`${Constantes.URL_API}LigneProduit`, this.httpOptions);
+    return this.http.get<LigneProduit[]>(`${Constantes.URL_API}LigneProduit`);
   }
 
   ajouterLigneProduit(ligneProduit: LigneProduit): Observable<LigneProduit> {
-    return this.http.post<LigneProduit>(`${Constantes.URL_API}LigneProduit`, ligneProduit, this.httpOptions);
+    return this.http.post<LigneProduit>(`${Constantes.URL_API}LigneProduit`, ligneProduit);
   }
 
   supprimerLigneProduit(ligneProduit: LigneProduit): Observable<LigneProduit> {
-    return this.http.delete<LigneProduit>(`${Constantes.URL_API}LigneProduit/${ligneProduit.id}`, this.httpOptions);
+    return this.http.delete<LigneProduit>(`${Constantes.URL_API}LigneProduit/${ligneProduit.id}`);
   }
 
 }

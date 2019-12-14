@@ -10,31 +10,17 @@ import { AuthenticationService } from './authentication.service';
 })
 export class CommentaireService {
 
-  private httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type' : 'application/json',
-      'Authorization': 'Bearer ' + localStorage.getItem("access_token")
-    })
-  };
-
   constructor(
     private http:HttpClient, 
     private authenticationService: AuthenticationService
-  ) { 
-    this.httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type' : 'application/json',
-        'Authorization' : 'Bearer ' + authenticationService.getToken().access_token
-      })
-    };
-  }
+  ) { }
 
   getAllCommentaire(): Observable<Commentaire[]> {
-    return this.http.get<Commentaire[]>(`${Constantes.URL_API}Commentaire`, this.httpOptions);
+    return this.http.get<Commentaire[]>(`${Constantes.URL_API}Commentaire`);
   }
 
   supprimerCommentaire(commentaire: Commentaire): Observable<Commentaire> {
-    return this.http.delete<Commentaire>(`${Constantes.URL_API}Commentaire/${commentaire.id}`, this.httpOptions);
+    return this.http.delete<Commentaire>(`${Constantes.URL_API}Commentaire/${commentaire.id}`);
   }
 
 }

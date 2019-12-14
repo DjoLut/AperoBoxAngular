@@ -30,7 +30,6 @@ export class AccueilComponent implements OnInit {
     this.authenticationService.login(username, password).subscribe(frm => {
       this.authenticationService.setToken(frm);
       this.router.navigate(["/accueil"]);
-      localStorage.setItem("access_token", frm.access_token);
     },
     error => {
       this.gestionErreur(error.status);
@@ -43,7 +42,6 @@ export class AccueilComponent implements OnInit {
 
   logout() {
     this.authenticationService.logout();
-    localStorage.removeItem("access_token");
   }
 
   gestionErreur(error: number) {

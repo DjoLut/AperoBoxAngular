@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Provider, forwardRef } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeaderComponent } from './Component/header/header.component';
 import { AccueilComponent } from './Component/AccueilComponents/accueil/accueil.component';
 import { CommonModule } from '@angular/common';
@@ -15,7 +15,14 @@ import { BoxListComponent } from './Component/MiseAJourComponents/box-list/box-l
 import { BoxDetailsComponent } from './Component/MiseAJourComponents/box-details/box-details.component';
 import { ProduitListComponent } from './Component/MiseAJourComponents/produit-list/produit-list.component';
 import { PageNonTrouveComponent } from './Component/page-non-trouve/page-non-trouve.component';
+import { apiInterceptor } from './apiInterceptor';
+import { ApiModule } from './api/api.module';
 
+export const API_INTERCEPTOR_PROVIDER: Provider = {
+  provide: HTTP_INTERCEPTORS,
+  useExisting: forwardRef(() => apiInterceptor),
+  multi: true
+};
 
 @NgModule({
   declarations: [
@@ -36,9 +43,11 @@ import { PageNonTrouveComponent } from './Component/page-non-trouve/page-non-tro
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    ApiModule.forRoot({rootUrl: "http://localhost:4200"})
   ],
-  providers: [],
+  providers: [apiInterceptor, 
+    API_INTERCEPTOR_PROVIDER],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
