@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Constantes } from '../Constantes';
 import { Observable } from 'rxjs';
 import { Utilisateur } from '../Model/Utilisateur';
+import { LoginModel } from '../Model/LoginModel';
 
 @Injectable({
   providedIn: 'root'
@@ -32,12 +33,8 @@ export class AuthenticationService {
     return this._accessToken !== null && this._accessToken!==undefined;
   }
 
-  public login(username: string, password: string) {
-    let body = "{\n" +
-      "\t\"Username\":\""+username+"\",\n" +
-      "\t\"Password\":\""+password+"\"\n" +
-    "}";
-    return this.http.post<JwtToken>(`${Constantes.URL_API}Jwt`, body, this.httpOptions);
+  public login(loginModel: LoginModel) {
+    return this.http.post<JwtToken>(`${Constantes.URL_API}Jwt`, loginModel, this.httpOptions);
   }
 
   public logout() {

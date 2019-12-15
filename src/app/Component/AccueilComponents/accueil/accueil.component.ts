@@ -25,9 +25,7 @@ export class AccueilComponent implements OnInit {
   }
 
   login() {
-    var username = this.loginForm.get('UserName').value;
-    var password = this.loginForm.get('Password').value;
-    this.authenticationService.login(username, password).subscribe(frm => {
+    this.authenticationService.login(this.loginForm.value).subscribe(frm => {
       this.authenticationService.setToken(frm);
       this.router.navigate(["/accueil"]);
     },

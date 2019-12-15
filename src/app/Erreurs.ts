@@ -1,3 +1,4 @@
+import { Constantes } from './Constantes';
 
 export class Erreurs
 {
@@ -6,21 +7,21 @@ export class Erreurs
     static gestionErreur(status: number) {
         switch(status) {
             case 400 : 
-                alert("Erreur de contenu ! ");
+                alert(Constantes.ERREUR400);
                 break;
             case 401 : 
-                alert("Accès non autorisée ! Session expirée ! ");
+                alert(Constantes.ERREUR401);
                 break;
             case 403 : 
-                alert("Vous n'avez pas les droits suffisants ! ");
+                alert(Constantes.ERREUR403);
                 break;
             case 409 : 
-                alert("Conflit. Accès concurrents ! ");
+                alert(Constantes.ERREUR409);
                 break;
             case 500 : 
-                alert("Erreur connexion avec l'api ! ");
+                alert(Constantes.ERREUR500);
             default : 
-                alert("Erreur inattendue ");
+                alert(Constantes.ERREURDEFAULT);
         }
     }
 }

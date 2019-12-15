@@ -4,13 +4,14 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { AuthenticationService } from './Service/authentication.service';
 import { Erreurs } from './Erreurs';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class apiInterceptor implements HttpInterceptor {
     /**
      *
      */
-    constructor(private authService: AuthenticationService) {
+    constructor(private authService: AuthenticationService, private router: Router) {
 
     }
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -26,9 +27,10 @@ export class apiInterceptor implements HttpInterceptor {
         // Also handle errors globally
         return next.handle(req).pipe(
             tap(x => x, error => {
-                // Handle this err
-                Erreurs.gestionErreur(error.status);
-                //console.error(`Error performing request, status code = ${err.status}`);
+                //Erreurs.gestionErreur(error.status);
+                this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+                    this.router.navigate(['/accueil']);
+                  });
             })
         );
     }
