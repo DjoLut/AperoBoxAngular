@@ -70,6 +70,11 @@ export class UtilisateursDetailsComponent implements OnInit {
     else
     {
       //Si l'adresse a été modifiée
+      this.adresseForm.rue = this.editAdresse.get("rue").value;
+      this.adresseForm.numero = this.editAdresse.get("numero").value;
+      this.adresseForm.localite = this.editAdresse.get("localite").value;
+      this.adresseForm.codePostal = this.editAdresse.get("codePostal").value;
+      this.adresseForm.pays = this.editAdresse.get("pays").value;
       this.ajouterAdresse();
     }
   }
