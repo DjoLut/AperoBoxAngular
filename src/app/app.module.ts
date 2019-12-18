@@ -16,7 +16,6 @@ import { BoxDetailsComponent } from './Component/MiseAJourComponents/box-details
 import { ProduitListComponent } from './Component/MiseAJourComponents/produit-list/produit-list.component';
 import { PageNonTrouveComponent } from './Component/page-non-trouve/page-non-trouve.component';
 import { apiInterceptor } from './apiInterceptor';
-import { ApiModule } from './api/api.module';
 
 export const API_INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -43,8 +42,7 @@ export const API_INTERCEPTOR_PROVIDER: Provider = {
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    CommonModule,
-    ApiModule.forRoot({rootUrl: "http://localhost:4200"})
+    CommonModule
   ],
   providers: [apiInterceptor, 
     API_INTERCEPTOR_PROVIDER],

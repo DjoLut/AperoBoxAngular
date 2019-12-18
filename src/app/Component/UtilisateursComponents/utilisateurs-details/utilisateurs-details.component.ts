@@ -70,52 +70,8 @@ export class UtilisateursDetailsComponent implements OnInit {
     else
     {
       //Si l'adresse a été modifiée
-      this.getAllAdresses();
-    }
-  }
-
-  adresseExist() {
-    this.existAdresse = new Adresse();
-    this.allAdresses.forEach(elem => {
-      if(elem.rue.toLocaleLowerCase() == this.editAdresse.get("rue").value.toLocaleLowerCase() &&
-      elem.numero == this.editAdresse.get("numero").value &&
-      elem.localite.toLocaleLowerCase() == this.editAdresse.get("localite").value.toLocaleLowerCase() &&
-      elem.codePostal == this.editAdresse.get("codePostal").value &&
-      elem.pays.toLocaleLowerCase() == this.editAdresse.get("pays").value.toLocaleLowerCase())
-        this.existAdresse = elem;
-    });
-
-    //Si l'adresse existe dans la base de données
-    if(this.existAdresse.id == null)
-    {
-      this.adresseForm.rue = this.editAdresse.get("rue").value;
-      this.adresseForm.numero = this.editAdresse.get("numero").value;
-      this.adresseForm.localite = this.editAdresse.get("localite").value;
-      this.adresseForm.codePostal = this.editAdresse.get("codePostal").value;
-      this.adresseForm.pays = this.editAdresse.get("pays").value;
       this.ajouterAdresse();
     }
-    else
-    {
-      this.utilisateurForm.adresse = this.existAdresse.id;
-      this.adresseForm.rue = this.existAdresse.rue;
-      this.adresseForm.numero = this.existAdresse.numero;
-      this.adresseForm.localite = this.existAdresse.localite;
-      this.adresseForm.codePostal = this.existAdresse.codePostal;
-      this.adresseForm.pays = this.existAdresse.pays;
-      this.modifierUtilisateur();
-    }
-  }
-
-  getAllAdresses()
-  {
-    this.adresseService.getAllAdresses().subscribe(data => {
-      this.allAdresses = data;
-      this.adresseExist();
-    },
-    error => {
-      Erreurs.gestionErreur(error.status);
-    });
   }
 
   modifierUtilisateur() {
