@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Utilisateur } from 'src/app/Model/Utilisateur';
+import { Utilisateur, UtilisateurRole } from 'src/app/Model/Utilisateur';
 import { UtilisateurService } from 'src/app/Service/utilisateur.service';
 import { Router } from '@angular/router';
 import { Adresse } from 'src/app/Model/Adresse';
@@ -18,12 +18,11 @@ export class UtilisateursDetailsComponent implements OnInit {
   @Input() adresse: Adresse;
   @Input() editUtilisateur: FormGroup;
   @Input() editAdresse: FormGroup;
+  @Input() editRole: FormGroup;
 
   utilisateurForm: Utilisateur;
   adresseForm: Adresse;
-
-  allAdresses: Adresse[];
-  existAdresse: Adresse;
+  utilisateurRoleForm: UtilisateurRole;
 
   constructor(
     private utilisateurService: UtilisateurService,
@@ -51,6 +50,79 @@ export class UtilisateursDetailsComponent implements OnInit {
     this.utilisateurForm.username = this.editUtilisateur.get("username").value;
     this.utilisateurForm.rowVersion = this.utilisateur.rowVersion;
 
+
+
+    //A REFAIRE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    this.utilisateurRoleForm = new UtilisateurRole();
+    if(this.utilisateur.utilisateurRole.length == 0)
+    {
+      if(this.editRole.get("admin").value) {
+        this.utilisateurRoleForm.idRole = "admin";
+        this.utilisateurRoleForm.idUtilisateur = this.utilisateur.id;
+        this.utilisateurService.ajouterUtilisateurRole(this.utilisateurRoleForm).subscribe();
+      }
+      if(this.editRole.get("utilisateur").value) {
+        this.utilisateurRoleForm.idRole = "utilisateur";
+        this.utilisateurRoleForm.idUtilisateur = this.utilisateur.id;
+        this.utilisateurService.ajouterUtilisateurRole(this.utilisateurRoleForm).subscribe();
+      }
+    }
+    else
+    {
+      /*var estAdmin = false;
+      var estUtilisateur = false;
+      console.log(this.utilisateur.utilisateurRole.length);
+      for(var i = 0; i < this.utilisateur.utilisateurRole.length; i++)
+      {
+        if(!estAdmin && this.utilisateur.utilisateurRole[i].idRole == "admin")
+          estAdmin = true;
+        if(!estUtilisateur && this.utilisateur.utilisateurRole[i].idRole == "utilisateur")
+          estUtilisateur = true;
+      }
+      for(var i = 0; i < this.utilisateur.utilisateurRole.length; i++)
+      {
+        if(!this.editRole.get("admin").value && estAdmin)
+        {
+          this.utilisateurService.supprimerUtilisateurRole(this.utilisateur.utilisateurRole[i]).subscribe();
+        }
+        else if(!estAdmin &&this.editRole.get("admin").value)
+        {
+          this.utilisateurRoleForm.idRole = "admin";
+          this.utilisateurRoleForm.idUtilisateur = this.utilisateur.id;
+          this.utilisateurService.ajouterUtilisateurRole(this.utilisateurRoleForm).subscribe();
+        }
+        if(!this.editRole.get("utilisateur").value && estUtilisateur)
+        {
+          this.utilisateurService.supprimerUtilisateurRole(this.utilisateur.utilisateurRole[i]).subscribe();
+        }
+        else if(!estUtilisateur && this.editRole.get("utilisateur").value )
+        {
+          this.utilisateurRoleForm.idRole = "utilisateur";
+          this.utilisateurRoleForm.idUtilisateur = this.utilisateur.id;
+          this.utilisateurService.ajouterUtilisateurRole(this.utilisateurRoleForm).subscribe();
+        }
+      }*/
+      for(var i = 0; i < this.utilisateur.utilisateurRole.length; i++)
+      {
+        this.utilisateurService.supprimerUtilisateurRole(this.utilisateur.utilisateurRole[i]).subscribe();
+      }
+      if(this.editRole.get("admin").value)
+      {
+        this.utilisateurRoleForm.idRole = "admin";
+        this.utilisateurRoleForm.idUtilisateur = this.utilisateur.id;
+        this.utilisateurService.ajouterUtilisateurRole(this.utilisateurRoleForm).subscribe();
+      }
+      if(this.editRole.get("utilisateur").value)
+      {
+        this.utilisateurRoleForm.idRole = "utilisateur";
+        this.utilisateurRoleForm.idUtilisateur = this.utilisateur.id;
+        this.utilisateurService.ajouterUtilisateurRole(this.utilisateurRoleForm).subscribe();
+      }
+      //////////////////////////////////////////////////
+
+      
+    }
+    
     this.remplirAdresseForm();
   }
 

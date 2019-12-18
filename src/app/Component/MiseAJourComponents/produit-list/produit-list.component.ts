@@ -15,8 +15,6 @@ export class ProduitListComponent implements OnInit {
   @Input() box: Box;
   @Input() editProduit: FormGroup;
   produits: Produit[];
-  
-  listeProduitQuantite: Array<{produit:Produit, quantite:number}>;
 
   constructor(private produitService: ProduitService) { }
 
@@ -28,8 +26,6 @@ export class ProduitListComponent implements OnInit {
     error => {
       Erreurs.gestionErreur(error.status);
     });
-
-    this.listeProduitQuantite = this.produitService.listeProduitQuantite;
   }
 
   get listeProduit() {

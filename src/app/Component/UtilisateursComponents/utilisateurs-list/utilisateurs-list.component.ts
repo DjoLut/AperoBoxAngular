@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UtilisateurService } from 'src/app/Service/utilisateur.service';
-import { Utilisateur } from 'src/app/Model/Utilisateur';
+import { Utilisateur, UtilisateurRole } from 'src/app/Model/Utilisateur';
 import { Adresse } from 'src/app/Model/Adresse';
 import { AdresseService } from 'src/app/Service/adresse.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -16,6 +16,7 @@ export class UtilisateursListComponent implements OnInit {
   utilisateurs: Utilisateur[];
   selectedUtilisateur: Utilisateur;
   selectedAdresse: Adresse;
+  utilisateurRole: UtilisateurRole[];
   selectedIndex: number = null;
 
   editUtilisateur = new FormGroup({
@@ -37,6 +38,11 @@ export class UtilisateursListComponent implements OnInit {
     pays: new FormControl('', [Validators.required, Validators.minLength(2)])
   });
 
+  editRole = new FormGroup({
+    admin: new FormControl(false),
+    utilisateur: new FormControl(false)
+  });
+
   constructor(
     private utilisateurService: UtilisateurService,
     private adresseService: AdresseService
@@ -54,6 +60,7 @@ export class UtilisateursListComponent implements OnInit {
 
   selectUtilisateur(utilisateur: Utilisateur, index: number) {
     this.selectedUtilisateur = utilisateur;
+
     this.adresseService.getAdresseById(utilisateur.adresse).subscribe(data => {
         this.selectedAdresse = data;
         this.remplirFormulaire(utilisateur);
@@ -89,6 +96,25 @@ export class UtilisateursListComponent implements OnInit {
       codePostal: this.selectedAdresse.codePostal,
       pays: this.selectedAdresse.pays
     })
+
+    this.editRole.patchValue({
+      admin: false,
+      utilisateur: false
+    })
+    for(var i = 0; i < utilisateur.utilisateurRole.length; i++)
+    {
+      if(utilisateur.utilisateurRole[i].idRole == "admin")
+      {
+        this.editRole.get("admin").setValue(true);
+      }
+      else
+      {
+        if(utilisateur.utilisateurRole[i].idRole == "utilisateur")
+        {
+          this.editRole.get("utilisateur").setValue(true);
+        }
+      }
+    }
   }
 
 }

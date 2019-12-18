@@ -20,7 +20,7 @@ export class Utilisateur {
 }
 
 export class UtilisateurRole {
-    idRole: number;
+    idRole: string;
     idUtilisateur: number;
     role: Role;
 }

@@ -31,7 +31,6 @@ export class ProduitService {
       });
     }
     else {
-      let i = 0;
       produits.forEach(prod => {
         this.estTrouve = false;
         prod.ligneProduit.forEach(lp => {
@@ -44,7 +43,6 @@ export class ProduitService {
         if(!this.estTrouve) {
           this.listeProduitQuantite.push({produit: prod, quantite: 0})
         }
-        i++;
       });
     }
     

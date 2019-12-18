@@ -1,13 +1,13 @@
 <div class="containerlisteproduit">
     <h3>Listes des produits de la box : </h3>
-    <ul [formGroup]="editProduit" class="listeProduit" *ngIf="listeProduitQuantite">
+    <ul [formGroup]="editProduit" class="listeProduit">
         <div formArrayName="listeProduit" class="box" *ngFor="let item of listeProduit.controls; let i = index">
             <div class="produit" [formGroupName]="i">
                 <div class="nomProduit" formGroupName="produit">
                     <input type="text" formControlName="nom" required>
                 </div>
                 <input type="number" formControlName="quantite" required>
-                <p *ngIf="listeProduit.at(i).get('quantite').invalid">La quantité est obligatoire et doit-être positif !</p>
+                <p *ngIf="listeProduit.at(i).get('quantite').invalid">La quantité est obligatoire et doit-être positif ou nulle !</p>
             </div>
         </div>
     </ul>
