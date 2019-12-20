@@ -27,6 +27,7 @@ export class AccueilComponent implements OnInit {
   login() {
     this.authenticationService.login(this.loginForm.value).subscribe(frm => {
       this.authenticationService.setToken(frm);
+      this.authenticationService.autoLogout((frm.expires_in) * 1000);
       this.router.navigate(["/accueil"]);
     },
     error => {

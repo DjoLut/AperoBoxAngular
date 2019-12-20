@@ -12,6 +12,7 @@ import { LoginModel } from '../Model/LoginModel';
 export class AuthenticationService {
 
   private _accessToken: JwtToken;
+  private timer = null;
 
   private httpOptions = {
     headers: new HttpHeaders({
@@ -38,7 +39,14 @@ export class AuthenticationService {
   }
 
   public logout() {
+    if(this.timer != null)
+      clearTimeout(this.timer);
     this.setToken(null);
+  }
+
+  public autoLogout(temps: number) {
+    if(this.isAuthenticated())
+      this.timer = setTimeout(this.logout, temps);
   }
 
 }

@@ -39,8 +39,7 @@ export class UtilisateursListComponent implements OnInit {
   });
 
   editRole = new FormGroup({
-    admin: new FormControl(false),
-    utilisateur: new FormControl(false)
+    admin: new FormControl(false)
   });
 
   constructor(
@@ -98,21 +97,13 @@ export class UtilisateursListComponent implements OnInit {
     })
 
     this.editRole.patchValue({
-      admin: false,
-      utilisateur: false
+      admin: false
     })
     for(var i = 0; i < utilisateur.utilisateurRole.length; i++)
     {
       if(utilisateur.utilisateurRole[i].idRole == "admin")
       {
         this.editRole.get("admin").setValue(true);
-      }
-      else
-      {
-        if(utilisateur.utilisateurRole[i].idRole == "utilisateur")
-        {
-          this.editRole.get("utilisateur").setValue(true);
-        }
       }
     }
   }
