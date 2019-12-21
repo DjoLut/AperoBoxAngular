@@ -20,6 +20,7 @@ export class Erreurs
                 break;
             case 500 : 
                 alert(Constantes.ERREUR500);
+                break;
             default : 
                 alert(Constantes.ERREURDEFAULT);
         }

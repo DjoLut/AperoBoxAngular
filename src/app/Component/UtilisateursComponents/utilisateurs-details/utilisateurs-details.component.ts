@@ -6,6 +6,7 @@ import { Adresse } from 'src/app/Model/Adresse';
 import { AdresseService } from 'src/app/Service/adresse.service';
 import { FormGroup } from '@angular/forms';
 import { Erreurs } from 'src/app/Erreurs';
+import { ok } from 'assert';
 
 @Component({
   selector: 'app-utilisateurs-details',
@@ -112,10 +113,11 @@ export class UtilisateursDetailsComponent implements OnInit {
 
   modifierUtilisateur() {
     this.utilisateurService.modifierUtilisateur(this.utilisateurForm).subscribe(elem => {
+      alert("Utilisateur modifié ! ");
       this.reloadPage();
     },
     error => {
-      Erreurs.gestionErreur(error.status);
+      this.gestionErreur(error.status);
     });
   }
 
@@ -144,6 +146,13 @@ export class UtilisateursDetailsComponent implements OnInit {
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
       this.router.navigate(['/utilisateur']);
     });
+  }
+    
+  gestionErreur(error: number) {
+    if(error == 400)
+      alert("Le nom d'utilisateur et/ou l'adresse email existe déjà !");
+    else
+      Erreurs.gestionErreur(error);
   }
 
 }

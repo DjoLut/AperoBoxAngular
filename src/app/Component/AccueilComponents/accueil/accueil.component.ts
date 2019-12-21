@@ -11,6 +11,9 @@ import { Erreurs } from 'src/app/Erreurs';
 })
 export class AccueilComponent implements OnInit {
 
+  private timer = null;
+  private counter;
+
   loginForm = new FormGroup({
     UserName: new FormControl(null, Validators.required),
     Password: new FormControl(null, Validators.required)
@@ -27,7 +30,6 @@ export class AccueilComponent implements OnInit {
   login() {
     this.authenticationService.login(this.loginForm.value).subscribe(frm => {
       this.authenticationService.setToken(frm);
-      this.authenticationService.autoLogout((frm.expires_in) * 1000);
       this.router.navigate(["/accueil"]);
     },
     error => {

@@ -86,6 +86,7 @@ export class BoxDetailsComponent implements OnInit {
 
   modifBox() {
     this.boxService.modifierBox(this.boxForm).subscribe(elem => {
+      alert("Box modifiée ! ");
       this.reloadPage();
     },
     error => {

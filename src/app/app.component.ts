@@ -9,5 +9,5 @@ import { AuthenticationService } from './Service/authentication.service';
 export class AppComponent {
   title = 'AperoBox';
 
-  constructor(private authenticationService: AuthenticationService) { }
+  constructor() { }
 }

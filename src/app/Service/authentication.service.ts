@@ -5,6 +5,7 @@ import { Constantes } from '../Constantes';
 import { Observable } from 'rxjs';
 import { Utilisateur } from '../Model/Utilisateur';
 import { LoginModel } from '../Model/LoginModel';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -20,10 +21,15 @@ export class AuthenticationService {
     })
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private router: Router
+  ) { }
 
   public setToken(token: JwtToken) {
     this._accessToken = token;
+    if(token != null)
+      this.timer = window.setTimeout(() => { this.logout(); }, (token.expires_in * 1000));
   }
 
   public getToken(): JwtToken {
@@ -40,13 +46,14 @@ export class AuthenticationService {
 
   public logout() {
     if(this.timer != null)
-      clearTimeout(this.timer);
+    {
+      alert("Session expiré. Déconnection ! ");
+      clearTimeout();
+    }
+
     this.setToken(null);
+    this.router.navigate(["/accueil"]);
   }
 
-  public autoLogout(temps: number) {
-    if(this.isAuthenticated())
-      this.timer = setTimeout(this.logout, temps);
-  }
 
 }
