@@ -30,6 +30,8 @@ export class AuthenticationService {
     this._accessToken = token;
     if(token != null)
       this.timer = window.setTimeout(() => { this.logout(); }, (token.expires_in * 1000));
+    else
+      clearTimeout(this.timer);
   }
 
   public getToken(): JwtToken {
@@ -46,10 +48,7 @@ export class AuthenticationService {
 
   public logout() {
     if(this.timer != null)
-    {
-      alert("Session expiré. Déconnection ! ");
-      clearTimeout();
-    }
+      alert("Déconnection ! (Session expirée) ");
 
     this.setToken(null);
     this.router.navigate(["/accueil"]);

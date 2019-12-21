@@ -12,6 +12,7 @@ export class Utilisateur {
     username: string;
     authorities: string;
     motDePasse: string;
+    //motDePasseConf: string;
     adresse: number;
     rowVersion: number;
     commande: Commande[];

@@ -49,6 +49,8 @@ export class UtilisateursDetailsComponent implements OnInit {
       this.utilisateurForm.telephone = +this.editUtilisateur.get("telephone").value;
     this.utilisateurForm.gsm = +this.editUtilisateur.get("gsm").value;
     this.utilisateurForm.username = this.editUtilisateur.get("username").value;
+    //this.utilisateurForm.motDePasse = this.utilisateur.motDePasse;
+    //this.utilisateurForm.motDePasseConf = this.utilisateur.motDePasse;
     this.utilisateurForm.rowVersion = this.utilisateur.rowVersion;
 
 
