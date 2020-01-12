@@ -16,6 +16,6 @@ input[type=number] {
     display: inline-block;
 }
 
-p {
+.error {
     color: red;
 }

@@ -3,12 +3,12 @@
     <div class="ligneForm">
         <label>Nom : </label>
         <input type="text" formControlName="nom" placeholder="Nom" required>
-        <p *ngIf="utilisateur.id != null && editUtilisateur.get('nom').invalid">Le nom est obligatoire avec minimum 2 caractères !</p>
+        <p *ngIf="utilisateur.id != null && editUtilisateur.get('nom').invalid">Le nom est obligatoire avec minimum 2 caractères et maximum 100 caractères !</p>
     </div>
     <div class="ligneForm">
         <label for="prenom">Prénom : </label>
         <input type="text" formControlName="prenom" placeholder="Prénom" required>
-        <p *ngIf="utilisateur.id != null && editUtilisateur.get('prenom').invalid">Le prénom est obligatoire avec minimum 2 caractères !</p>
+        <p *ngIf="utilisateur.id != null && editUtilisateur.get('prenom').invalid">Le prénom est obligatoire avec minimum 2 caractères et maximum 100 caractères !</p>
     </div>
     <div class="ligneForm">
         <label for="dateNaissance">Age : </label>
@@ -35,7 +35,7 @@
     <div class="ligneForm">
         <label for="username">Username : </label>
         <input type="text" formControlName="username" placeholder="Username" required>
-        <p *ngIf="utilisateur.id != null && editUtilisateur.get('username').invalid">Le nom d'utilisateur est obligatoire avec minimum 2 caractères !</p>
+        <p *ngIf="utilisateur.id != null && editUtilisateur.get('username').invalid">Le nom d'utilisateur est obligatoire avec minimum 2 caractèresavec minimum 2 caractères et maximum 100 caractères !</p>
     </div>
 
     <form [formGroup]="editRole">
@@ -51,31 +51,31 @@
         <div class="ligneForm">
             <label for="rue">Rue : </label>
             <input type="text" formControlName="rue" placeholder="Rue" required>
-            <p *ngIf="adresse.id != null && editAdresse.get('rue').invalid">La rue de votre adresse est obligatoire avec minimum 5 caractères !</p>
+            <p *ngIf="adresse.id != null && editAdresse.get('rue').invalid">La rue de votre adresse est obligatoire avec minimum 5 caractères et maximum 150 caractères !</p>
         </div>
         <div class="ligneForm">
             <label for="numero">Numéro : </label>
             <input type="number" formControlName="numero" placeholder="Numéro" required>
-            <p *ngIf="adresse.id != null && editAdresse.get('numero').invalid">Le numéro de votre habitation est obligatoire ! (minimum 1)</p>
+            <p *ngIf="adresse.id != null && editAdresse.get('numero').invalid">Le numéro de votre habitation est obligatoire ! (minimum 1 et maximum 9999)</p>
         </div>
         <div class="ligneForm">
             <label for="localite">Localité : </label>
             <input type="text" formControlName="localite" placeholder="Localité" required>
-            <p *ngIf="adresse.id != null && editAdresse.get('localite').invalid">La localité est obligatoire avec minimum 2 caractères !</p>
+            <p *ngIf="adresse.id != null && editAdresse.get('localite').invalid">La localité est obligatoire avec minimum 2 caractères et maximum 50 caractères !</p>
         </div>
         <div class="ligneForm">
             <label for="codePostal">Code Postal : </label>
             <input type="number" formControlName="codePostal" placeholder="Code Postal" required>
-            <p *ngIf="adresse.id != null && editAdresse.get('codePostal').invalid">Le code postal est obligatoire ! (2 chiffres positifs requis)</p>
+            <p *ngIf="adresse.id != null && editAdresse.get('codePostal').invalid">Le code postal est obligatoire ! (minimum 10 et maximum 999999)</p>
         </div>
         <div class="ligneForm">
             <label for="pays">Pays : </label>
             <input type="text" formControlName="pays" placeholder="Pays" required>
-            <p *ngIf="adresse.id != null && editAdresse.get('pays').invalid">Le pays est obligatoire avec minimum 2 caractères !</p>
+            <p *ngIf="adresse.id != null && editAdresse.get('pays').invalid">Le pays est obligatoire avec minimum 2 caractères et maximum 50 caractères !</p>
         </div>
     </form>
     <div class="button">
-        <button type="submit" (click)="remplirUtilisateurForm()" [disabled]="!editUtilisateur.valid">Modifier</button>
+        <button type="submit" (click)="remplirUtilisateurForm()" [disabled]="!editUtilisateur.valid || !editAdresse.valid || utilisateur.id == null">Modifier</button>
         <button type="submit" (click)="suppressionUtilisateur(utilisateur)" [disabled]="utilisateur.id == null">Supprimer</button>
     </div>
 </form>

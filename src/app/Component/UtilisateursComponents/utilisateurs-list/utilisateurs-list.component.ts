@@ -20,22 +20,22 @@ export class UtilisateursListComponent implements OnInit {
   selectedIndex: number = null;
 
   editUtilisateur = new FormGroup({
-    nom: new FormControl('', [Validators.required, Validators.minLength(2)]),
-    prenom: new FormControl('', [Validators.required, Validators.minLength(2)]),
+    nom: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
+    prenom: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
     dateNaissance: new FormControl('yyyy-MM-dd', Validators.required),
-    mail: new FormControl('', [Validators.required, Validators.email]),
+    mail: new FormControl('', [Validators.required, Validators.email, Validators.minLength(3), Validators.maxLength(150)]),
     telephone: new FormControl('', [Validators.pattern('^[0-9]*$'), Validators.maxLength(9), Validators.minLength(9)]),
     gsm: new FormControl('', [Validators.pattern('^[0-9]*$'), Validators.maxLength(10), Validators.minLength(10), Validators.required]),
-    username: new FormControl('', [Validators.required, Validators.minLength(2)]),
+    username: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
     rowversion: new FormControl('')
   });
 
   editAdresse = new FormGroup({
-    rue: new FormControl('', [Validators.required, Validators.minLength(5)]),
-    numero: new FormControl('', [Validators.required, Validators.min(1)]),
-    localite: new FormControl('', [Validators.required, Validators.minLength(2)]),
-    codePostal: new FormControl('', [Validators.required, Validators.min(10)]),
-    pays: new FormControl('', [Validators.required, Validators.minLength(2)])
+    rue: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(150)]),
+    numero: new FormControl('', [Validators.pattern('^[0-9]*$'), Validators.required, Validators.min(1), Validators.max(9999)]),
+    localite: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]),
+    codePostal: new FormControl('', [Validators.pattern('^[0-9]*$'), Validators.required, Validators.min(10), Validators.max(999999)]),
+    pays: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(50)])
   });
 
   editRole = new FormGroup({

@@ -23,12 +23,12 @@ export class BoxListComponent implements OnInit {
 
   editBox = new FormGroup({
     id: new FormControl(),
-    nom: new FormControl('', [Validators.required, Validators.minLength(2)]),
-    prixUnitaireHtva: new FormControl('', [Validators.required, Validators.min(0)]),
+    nom: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
+    prixUnitaireHtva: new FormControl('', [Validators.required, Validators.min(0), Validators.max(10000)]),
     tva: new FormControl('yyyy-MM-dd', [Validators.required, Validators.max(1), Validators.min(0)]),
     promotion: new FormControl('', [Validators.max(1), Validators.min(0)]),
-    description: new FormControl('', [Validators.required, Validators.minLength(2)]),
-    photo: new FormControl('', Validators.required),
+    description: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(150)]),
+    photo: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
     affichable: new FormControl(),
     dateCreation: new FormControl('yyyy-MM-dd', Validators.required),
     rowversion: new FormControl('')
@@ -114,7 +114,7 @@ export class BoxListComponent implements OnInit {
             datePremption: new FormControl(this.produitService.listeProduitQuantite[i].produit.datePeremption),
             alcool: new FormControl(this.produitService.listeProduitQuantite[i].produit.alcool)
           }),
-          quantite: new FormControl(this.produitService.listeProduitQuantite[i].quantite, [Validators.required, Validators.min(0)])
+          quantite: new FormControl(this.produitService.listeProduitQuantite[i].quantite, [Validators.required, Validators.pattern('^[0-9]*$'), Validators.min(0), Validators.max(99)])
         }));
     }
   }

@@ -4,12 +4,12 @@
         <div>
             <label for="nom">Nom : </label>
             <input type="text" formControlName="nom" placeholder="Nom de la box" required>
-            <p *ngIf="box.id != null && editBox.get('nom').invalid">Le nom de la box est obligatoire avec minimum 2 caractères !</p>
+            <p *ngIf="box.id != null && editBox.get('nom').invalid">Le nom de la box est obligatoire avec minimum 2 caractères et maximum 100 caractères !</p>
         </div>
         <div>
             <label for="prixUnitaireHtva">Prix : </label>
             <input type="number" formControlName="prixUnitaireHtva" placeholder="12.21" required>
-            <p *ngIf="box.id != null && editBox.get('prixUnitaireHtva').invalid && !editBox.get('prixUnitaireHtva').errors.required">Le prix de la box doit-être positif !</p>
+            <p *ngIf="box.id != null && editBox.get('prixUnitaireHtva').invalid && !editBox.get('prixUnitaireHtva').errors.required">Le prix de la box doit-être positif (maximum 10000) !</p>
             <p *ngIf="box.id != null && editBox.get('prixUnitaireHtva').invalid && editBox.get('prixUnitaireHtva').errors.required">Le prix de la box est obligatoire !</p>
         </div>
         <div>
@@ -25,12 +25,12 @@
         <div>
             <label for="description">Description : </label>
             <input type="text" formControlName="description" placeholder="Description de la box" required>
-            <p *ngIf="box.id != null && editBox.get('description').invalid">La description de la box est obligatoire avec minimum 2 caractères !</p>
+            <p *ngIf="box.id != null && editBox.get('description').invalid">La description de la box est obligatoire minimum 2 caractères et maximum 150 caractères !</p>
         </div>
         <div>
             <label for="photo">Photo : </label>
             <input type="text" formControlName="photo" placeholder="Lien de la photo" required>
-            <p *ngIf="box.id != null && editBox.get('photo').invalid">Lien de la photo obligatoire !</p>
+            <p *ngIf="box.id != null && editBox.get('photo').invalid">Lien de la photo obligatoire minimum 2 caractères et maximum 100 caractères !</p>
         </div>
         <div>
             <label>Visibilité : </label>
@@ -43,7 +43,7 @@
             <p *ngIf="box.id != null && editBox.get('dateCreation').invalid && editBox.get('dateCreation').errors.required">La date de création est obligatoire !</p>
         </div>
         <div class="button">
-            <button type="submit" (click)="remplirBoxForm()" [disabled]="!editBox.valid || !editProduit.valid">Modifer</button>
+            <button type="submit" (click)="remplirBoxForm()" [disabled]="!editBox.valid || !editProduit.valid || box.id == null">Modifer</button>
             <button type="submit" (click)="suppressionBox(box)" [disabled]="box.id == null">Supprimer</button>
         </div>
     </form>
