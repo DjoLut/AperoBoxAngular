@@ -10,7 +10,7 @@ Cette application permet de gérer les utilisateurs, leurs commentaires ainsi qu
 Nous recommandons l'utilisation de Visual Studio Code.
 
 1. Lancez Visual Studio Code et ouvrez un terminal
-2. Positionnez-vous dans le repertoire où vous souhaitez installer le projet avec la commande "cd url" (exemple : cd C:\Users\XXXXX\Desktop)
+2. Positionnez-vous dans le répertoire où vous souhaitez installer le projet avec la commande "cd url" (exemple : cd C:\Users\XXXXX\Desktop)
 3. Lancez la commande "git clone https://github.com/etu32766/AperoBoxAngular"
 4. Vérifiez que NodeJS est bien installé sur votre machine avec la commande "node --version", si vous n'avez pas NodeJS installez-le avec le lien suivant : [NodeJS](https://nodejs.org "NodeJS Home Page"). Après l'installation, fermez et ouvrez à nouveau Visual Studio Code.
 5. Positionnez-vous dans le dossier Source avec la commande "cd Source". Puis installez npm si votre machine ne le possède pas via la commande "npm install"
