@@ -9,7 +9,7 @@
         <div>
             <label for="prixUnitaireHtva">Prix : </label>
             <input type="number" formControlName="prixUnitaireHtva" placeholder="12.21" required>
-            <p *ngIf="box.id != null && editBox.get('prixUnitaireHtva').invalid && !editBox.get('prixUnitaireHtva').errors.required">Le prix de la box doit-être positif (maximum 10000) !</p>
+            <p *ngIf="box.id != null && editBox.get('prixUnitaireHtva').invalid && !editBox.get('prixUnitaireHtva').errors.required">Le prix de la box doit être positif (maximum 10000) !</p>
             <p *ngIf="box.id != null && editBox.get('prixUnitaireHtva').invalid && editBox.get('prixUnitaireHtva').errors.required">Le prix de la box est obligatoire !</p>
         </div>
         <div>

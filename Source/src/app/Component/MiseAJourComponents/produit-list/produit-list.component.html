@@ -1,5 +1,5 @@
 <div class="containerlisteproduit">
-    <h3>Listes des produits de la box : </h3>
+    <h3>Liste des produits de la box : </h3>
     <p *ngIf="!listeProduit.length">Aucun produit</p>
     <ul [formGroup]="editProduit" class="listeProduit">
         <div formArrayName="listeProduit" class="box" *ngFor="let item of listeProduit.controls; let i = index">
@@ -8,7 +8,7 @@
                     <input type="text" formControlName="nom" required>
                 </div>
                 <input type="number" formControlName="quantite" required>
-                <p *ngIf="listeProduit.at(i).get('quantite').invalid" class="error">La quantité doit-être compris entre 0 et 99 !</p>
+                <p *ngIf="listeProduit.at(i).get('quantite').invalid" class="error">La quantité doit être comprise entre 0 et 99 !</p>
             </div>
         </div>
     </ul>

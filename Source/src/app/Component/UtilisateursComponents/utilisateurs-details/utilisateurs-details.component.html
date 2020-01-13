@@ -11,7 +11,7 @@
         <p *ngIf="utilisateur.id != null && editUtilisateur.get('prenom').invalid">Le prénom est obligatoire avec minimum 2 caractères et maximum 100 caractères !</p>
     </div>
     <div class="ligneForm">
-        <label for="dateNaissance">Age : </label>
+        <label for="dateNaissance">Âge : </label>
         <input type="date" formControlName="dateNaissance" required>
         <p *ngIf="utilisateur.id != null && editUtilisateur.get('dateNaissance').invalid && editUtilisateur.get('dateNaissance').errors.required">La date de naissance est obligatoire !</p>
     </div>
@@ -33,9 +33,9 @@
         <p *ngIf="utilisateur.id != null && editUtilisateur.get('gsm').invalid && !editUtilisateur.get('gsm').errors.required">Le numéro de GSM n'est pas valide !</p>
     </div>
     <div class="ligneForm">
-        <label for="username">Username : </label>
+        <label for="username">Nom d'utilisateur : </label>
         <input type="text" formControlName="username" placeholder="Username" required>
-        <p *ngIf="utilisateur.id != null && editUtilisateur.get('username').invalid">Le nom d'utilisateur est obligatoire avec minimum 2 caractèresavec minimum 2 caractères et maximum 100 caractères !</p>
+        <p *ngIf="utilisateur.id != null && editUtilisateur.get('username').invalid">Le nom d'utilisateur est obligatoire avec minimum 2 caractères et maximum 100 caractères !</p>
     </div>
 
     <form [formGroup]="editRole">
