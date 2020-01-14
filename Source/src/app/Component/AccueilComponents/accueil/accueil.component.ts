@@ -11,9 +11,6 @@ import { Erreurs } from 'src/app/Erreurs';
 })
 export class AccueilComponent implements OnInit {
 
-  private timer = null;
-  private counter;
-
   loginForm = new FormGroup({
     UserName: new FormControl(null, Validators.required),
     Password: new FormControl(null, Validators.required)

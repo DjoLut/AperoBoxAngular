@@ -8,4 +8,5 @@ export class Constantes
     public static ERREUR409 = "Conflit. Accès concurrents ! ";
     public static ERREUR500 = "Erreur connexion avec l'api ! ";
     public static ERREURDEFAULT = "Erreur inattendue ";
+    public static ERREURINTERNET = "Vérifiez votre connexion internet !";
 }

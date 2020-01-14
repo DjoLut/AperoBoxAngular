@@ -6,6 +6,9 @@ export class Erreurs
 
     static gestionErreur(status: number) {
         switch(status) {
+            case 0 :
+                alert(Constantes.ERREURINTERNET);
+                break;
             case 400 : 
                 alert(Constantes.ERREUR400);
                 break;
